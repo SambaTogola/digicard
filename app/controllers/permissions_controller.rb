@@ -28,10 +28,10 @@ class PermissionsController < ApplicationController
   def edit
     @features = Feature.all 
     @roles = Role.where.not(name: ["superuser", "root"])
-   
-    permission_items = @permission.permission_items
+    @permissions = Permission.all
+    permissions = @permission.permission_items
 
-    @selected_permissions = permission_items unless permission_items.blank?
+    @selected_permissions = permissions unless permissions.blank?
 
   end
 
@@ -50,7 +50,7 @@ class PermissionsController < ApplicationController
     respond_to do |format|
       if @permission.save
         @permissions = Permission.all
-        format.html { redirect_to permissions_path, notice: 'permission was successfully created.' }
+        format.html { redirect_to @permission, notice: 'permission was successfully created.' }
         format.json { render :show, status: :created, location: @permission }
         format.js
       else
@@ -66,15 +66,15 @@ class PermissionsController < ApplicationController
   def update
     @permission.permission_items.delete_all
      # Create Scholarship study levels
-     params[:permission_items][:permission_actions].each do |permission_action|
-      unless permission_action.empty?
-        @permission.permission_items.build(action_name: permission_action)
+     params[:permissions][:id].each do |permission|
+      unless permission.empty?
+        @permission.permission_items.build(permission_id: permission)
       end
     end
 
     respond_to do |format|
       if @permission.update(permission_params)
-        @permissions = Permission.all
+        @permissions = permission.all
         format.html { redirect_to @permission, notice: 'permission was successfully updated.' }
         format.json { render :show, status: :ok, location: @permission }
         format.js
@@ -84,11 +84,6 @@ class PermissionsController < ApplicationController
         format.js
       end
     end
-  end
-
-
-  def delete
-    @permission = Permission.find(params[:permission_id])
   end
 
   # DELETE /permissions/1

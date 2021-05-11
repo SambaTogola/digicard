@@ -1,5 +1,0 @@
-$('#imputation_recipient_id').empty();
-$('#imputation_recipient_id').append( $('<option value="">Sélectionner</option>'));
-<% @profiles.each do |recipient| %>
-  $('#imputation_recipient_id').append($('<option value="<%= recipient.user_id %>"><%= recipient.full_name %></option>'));
-<% end %>

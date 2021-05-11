@@ -1,5 +1,4 @@
 class CustomUsersController < ApplicationController
-	
 		before_action :authenticate_user!
 		layout "dashboard"
 
@@ -9,38 +8,22 @@ class CustomUsersController < ApplicationController
 
     
 		def new
-		
-		
-			@directions = Direction.all
-			@divisions = Division.all
-			@services = Service.all
-			@roles = Role.where.not(name: "superuser")
-		
-			#@roles = Role.all
+			@roles = Role.where.not(name: ["superuser", "root"])
 			@user = User.new
 			@user.build_profile
-		end
-
-		def get_divisions
-			puts "ID: #{params[:id]}"
-			@divisions = Division.where(direction_id: params[:id])#.map { |division| [division.name, division.id] }.unshift('Sélectionner')
-		end
-
-		def get_services
-			puts "ID: #{params[:id]}"
-			@services = Service.where(division_id: params[:id])#.map { |service| [service.name, service.id] }.unshift('Sélectionner')
+		
+			
 		end
 	
-		def create
-			
+    def create
 		@user = User.new(user_params)
-		@user.created_by = current_user.id
+		#@user.build_profile(params[:profile_attributes])
+		#@user.created_by = current_user.id
 
 			respond_to do |format|
 				if @user.save
 					#@user.build_profile
 					@users = User.where.not(id: current_user.id)
-					record_activity("Créer un nouvel utilisateur (ID: #{@user.id})")
 
 					format.html { redirect_to all_users_path, notice: 'User was successfully created.' }
 					format.json { render :show, status: :created, location: @contributor }
@@ -60,13 +43,11 @@ class CustomUsersController < ApplicationController
 		def create_admin
 		end
 
-	# Index
     def index
     	
-			@users = User.where.not(id: current_user.id)
+			@users = User.all#where.not(id: current_user.id)
 		
-			record_activity("Afficher la liste des utilisateurs.")
-
+	
     end
     
     def unregistered
@@ -80,11 +61,7 @@ class CustomUsersController < ApplicationController
     end
 
     # GET /users/1/edit
-		def edit
-			
-			@directions = Direction.all
-			@divisions = Division.all
-			@services = Service.all
+    def edit
 			@roles = Role.where.not(name: "superuser")
 			@user.profile || @user.build_profile 
     end
@@ -104,8 +81,7 @@ class CustomUsersController < ApplicationController
       	respond_to do |format|
         	if @user.update_attributes(status: 'disable')
 						@users = User.where.not(id: current_user.id)
-						record_activity("Désactiver le compte d'un utilisateur (ID: #{@user.id})")
-
+        
 				format.html { redirect_to @user, notice: 'User was successfully updated.' }
 				format.json { render :show, status: :ok, location: @user }
 				format.js
@@ -133,8 +109,7 @@ class CustomUsersController < ApplicationController
 		respond_to do |format|
       		if @user.update_attributes(status: 'enable')
 						@users = User.where.not(id: current_user.id)
-						record_activity("Activer le compte d'un utilisateur (ID: #{@user.id})")
-
+			
 				format.html { redirect_to @user, notice: 'User was successfully updated.' }
 				format.json { render :show, status: :ok, location: @user }
 				format.js
@@ -145,7 +120,7 @@ class CustomUsersController < ApplicationController
 					Rails.application.executor.wrap do
 					  # your code here
 					end
-				end
+				  end
 			  
 			else
 				format.html { render :edit }
@@ -163,7 +138,6 @@ class CustomUsersController < ApplicationController
     
     	if @user.destroy
 				@users = User.where.not(id: current_user.id)
-        record_activity("Supprimer un utilisateur (ID: #{@user.id})")
 
 				respond_to do |format|
 					format.html { redirect_to all_users_path, notice: "L'utilisateur a été supprimer avec succès!" }
@@ -191,7 +165,6 @@ class CustomUsersController < ApplicationController
 
 			if @user.update(user_params)
 				@users = User.where.not(id: current_user.id)
-        record_activity("Modifier un utilisateur (ID: #{@user.id})")
 
 				format.html { redirect_to all_users_path, notice: 'User was successfully updated.' }
 				format.json { render :show, status: :ok, location: @user }
@@ -213,15 +186,12 @@ class CustomUsersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
-      if !@user.nil?
-        return @user
-        
-      end
+     
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :password,:password_confirmation, :role_id,  profile_attributes: [:first_name, :last_name, :civility, :position, :direction_id, :division_id, :service_id])
+      params.require(:user).permit(:login,  :email, :password,:password_confirmation, :role_id,  profile_attributes: [:first_name, :last_name, :gender])
     end
 
 end

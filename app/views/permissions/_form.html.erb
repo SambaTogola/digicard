@@ -19,7 +19,7 @@
 
   <%= fields_for(:permission_items) do |permission_action_form| %>
           <%= permission_action_form.label :permission_actions, "Permissions", class: "required" %>
-          <%= permission_action_form.select(:permission_actions, PERMISSION_ACTIONS, {selected: (@selected_permissions.map(&:action_name) unless @selected_permissions.nil?)}, {class: "form-control", style: "width: 100%;",  multiple: true,required: true}) %>
+          <%= permission_action_form.select(:permission_actions, PERMISSION_ACTIONS, {selected: (@selected_permissions.map(&:permission_id) unless @selected_permissions.nil?)}, {class: "form-control", style: "width: 100%;",  multiple: true,required: true}) %>
         <% end %>
 
   </div>

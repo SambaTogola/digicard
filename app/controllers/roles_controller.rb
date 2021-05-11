@@ -1,8 +1,6 @@
 class RolesController < ApplicationController
-  authorize_resource
-  before_action :authenticate_user!
   before_action :set_role, only: [:show, :edit, :update, :destroy]
-  layout "dashboard"
+
   # GET /roles
   # GET /roles.json
   def index
@@ -30,14 +28,11 @@ class RolesController < ApplicationController
 
     respond_to do |format|
       if @role.save
-        @roles = Role.all
         format.html { redirect_to @role, notice: 'Role was successfully created.' }
         format.json { render :show, status: :created, location: @role }
-        format.js
       else
         format.html { render :new }
         format.json { render json: @role.errors, status: :unprocessable_entity }
-        format.js
       end
     end
   end
@@ -47,20 +42,13 @@ class RolesController < ApplicationController
   def update
     respond_to do |format|
       if @role.update(role_params)
-        @roles = Role.all
         format.html { redirect_to @role, notice: 'Role was successfully updated.' }
         format.json { render :show, status: :ok, location: @role }
-        format.js
       else
         format.html { render :edit }
         format.json { render json: @role.errors, status: :unprocessable_entity }
       end
     end
-  end
-
-
-  def delete
-    @role = Role.find(params[:role_id])
   end
 
   # DELETE /roles/1
@@ -79,7 +67,7 @@ class RolesController < ApplicationController
       @role = Role.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
+    # Never trust parameters from the scary internet, only allow the white list through.
     def role_params
       params.require(:role).permit(:name, :description, :status)
     end

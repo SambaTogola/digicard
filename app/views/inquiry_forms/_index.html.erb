@@ -1,0 +1,23 @@
+ <% @inquiry_forms.each do |inquiry_form| %>
+    <tr>
+    
+    <td><%= inquiry_form.full_name %></td>
+    <td><%= inquiry_form.phone %></td>
+    <td><%= inquiry_form.email %></td>
+    <td><%= property(inquiry_form.property_id).name %></td>
+   
+   
+    <td>
+            <div class="action-buttons">
+                    <%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'), edit_inquiry_form_path(inquiry_form), title: "Modifier", remote: true %>
+
+
+
+
+<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), inquiry_form_delete_path(inquiry_form), remote: true, title: "Supprimer", class: "delete" %>
+</div>
+        </td>
+    </tr>
+<% end %>

@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Uid:</strong>
+  <%= @inquiry_form.uid %>
+</p>
+
+<p>
+  <strong>Full name:</strong>
+  <%= @inquiry_form.full_name %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @inquiry_form.phone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @inquiry_form.email %>
+</p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @inquiry_form.message %>
+</p>
+
+<p>
+  <strong>Property:</strong>
+  <%= @inquiry_form.property %>
+</p>
+
+<p>
+  <strong>Recipient:</strong>
+  <%= @inquiry_form.recipient %>
+</p>
+
+<p>
+  <strong>Read:</strong>
+  <%= @inquiry_form.read %>
+</p>
+
+<p>
+  <strong>Read at:</strong>
+  <%= @inquiry_form.read_at %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @inquiry_form.status %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @inquiry_form.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_inquiry_form_path(@inquiry_form) %> |
+<%= link_to 'Back', inquiry_forms_path %>

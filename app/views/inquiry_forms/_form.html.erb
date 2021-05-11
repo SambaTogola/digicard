@@ -1,0 +1,64 @@
+
+<%= form_with(model: inquiry_form, local: true, class: "inquiry-form") do |form| %>
+  <% if inquiry_form.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(inquiry_form.errors.count, "error") %> prohibited this inquiry_form from being saved:</h2>
+
+      <ul>
+      <% inquiry_form.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ 
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <%= form.label :full_name, "Nom complet", class: "required" %>
+        <%= form.text_field :full_name, class: "form-control", placeholder: "Nom complet" %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :phone, "Téléphone", class: "required" %>
+        <%= form.text_field :phone, class: "form-control" , placeholder: "Téléphone", required: true%>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :email, "Email" %>
+        <%= form.email_field :email, class: "form-control", placeholder: "Email" %>
+      </div>
+
+     
+      <div class="form-group">
+        <%= form.label :message, class: "required" %>
+        <%= form.text_area :message , class: "form-control", placeholder: "Votre message ici!", required: true %>
+      </div>
+
+ 
+
+
+    
+      <!--
+      <div class="form-group">
+        <%= form.select :user_type , PROPERTY_CONTACT_USER_TYPES,  {prompt: "Sélectioner"}, class: "form-control", required: true  %>
+      </div>
+      -->
+   
+					
+									
+    
+      <div class="form-group">
+        <div class="property-form-terms"> 
+        En soumettant ce formulaire, vous acceptez les
+        <%= link_to "conditions d'utilisation" , cgu_path, target: "_blank" %>
+        
+        </div>
+      </div>
+ <%= form.hidden_field :property_id, value: @property.id %>
+  <div class="form-group">
+    <%= form.submit "Envoyer", class: "btn btn-primary btn-block" %>
+  </div>
+<% end %>
+

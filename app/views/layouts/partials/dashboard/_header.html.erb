@@ -7,7 +7,10 @@
       </div><!-- br-header-left -->
       <div class="br-header-right">
         <nav class="nav">
-          <!-- notifications -->
+           <li class="nav-item">
+            <%= link_to raw('<i class="fa fa-globe " aria-hidden="true"></i> Retour au site'), root_url, class: "btn btn-link"  %>
+          </li>
+            <!-- notifications -->
           <%= render "components/notifications/notifications" %>
           <!-- Profile -->
             <%= render "components/signedin/signedin" %>
