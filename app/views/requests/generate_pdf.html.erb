@@ -1,0 +1,20 @@
+<div class="content-border">
+	<div class="request-title">
+		<%= @request.request_type.name %>
+	</div>
+	<div class="request-body">
+		<span class="request-field">Nom:</span>  <%= @request.last_name %><br />
+		<span class="request-field">Prénom:</span> <%= @request.first_name %><br />
+		<span class="request-field">Date et lieu de naissance:</span> <%= "#{@request.born_date.strftime("%d/%m/%Y")} à #{@request.born_place}" %> <br />
+		<span class="request-field">Année académique:</span> <%= @request.academic_year %><br />
+		<span class="request-field">Classe:</span> <%= @request.grade %>
+		<span class="request-field">Spécialité:</span> <%= @request.specialty %> <br />
+		<span class="request-field">Date de la demande:</span> <%= @request.request_date.strftime("%d/%m/%Y") %><br />
+		
+	</div>
+
+</div>
+
+<div class="signature">
+	Signature du demandeur
+</div>

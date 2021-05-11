@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Request:</strong>
+  <%= @request_company.request %>
+</p>
+
+<p>
+  <strong>Company name:</strong>
+  <%= @request_company.company_name %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @request_company.status %>
+</p>
+
+<%= link_to 'Edit', edit_request_company_path(@request_company) %> |
+<%= link_to 'Back', request_companies_path %>
