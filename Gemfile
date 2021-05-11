@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 #ruby '2.4.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.5'
+gem 'rails', '~> 5.2.3'
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
 # Use Puma as the app server
@@ -28,7 +28,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
+gem 'mini_magick', '~> 4.11'
+gem 'mimemagic', '~> 0.4.3'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -64,55 +65,53 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #additional gem
 gem 'autoprefixer-rails', '~> 9.8', '>= 9.8.6.5'
-gem 'meta-tags', '~> 2.14'
 gem 'turbolinks', '~> 5.2'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'devise', '~> 4.6', '>= 4.6.2'
 gem 'devise-i18n', '~> 1.8'
 gem 'cancancan', '~> 3.0', '>= 3.0.1'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.5'
-#gem 'font-awesome-sass', '~> 5.0.13'
-
 gem 'pg', '~> 1.1', '>= 1.1.4'
 gem 'sassc', '~> 2.0', '>= 2.0.1'
 gem 'bootstrap', '~> 4.3', '>= 4.3.1'
-#gem 'bootstrap-sass', '~> 3.3.7'
-
 gem 'rails-i18n', '~> 5.1', '>= 5.1.3'
 gem 'friendly_id', '~> 5.2', '>= 5.2.5'
 gem 'premailer-rails', '~> 1.10', '>= 1.10.2'
 gem 'remotipart', '~> 1.4', '>= 1.4.2'
-#gem 'paperclip', '~> 6.1'
 gem 'client_side_validations', '~> 14.1'
 gem 'action_mailer_auto_url_options', '~> 1.0', '>= 1.0.2'
 gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.2'
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
 gem 'chosen-rails', '~> 1.8', '>= 1.8.7'
-#gem 'apartment', '~> 2.2'
 gem 'chartkick', '~> 3.0', '>= 3.0.2'
 gem 'cocoon', '~> 1.2', '>= 1.2.12'
-#gem 'ckeditor', '~> 5.0'
 gem 'ckeditor', github: 'galetahub/ckeditor'
-gem 'social-share-button', '~> 1.2', '>= 1.2.1'
+gem 'social-share-button', '~> 1.2', '>= 1.2.3'
 gem 'sanitize', '~> 5.1'
 gem 'creek', '~> 2.2'
-gem 'recaptcha', '~> 5.5'
-gem 'dotenv-rails', '~> 2.7', '>= 2.7.6',  :groups => [:development, :test, :production]
 gem 'acts-as-taggable-on', '~> 6.5'
-gem 'select2-rails', '~> 4.0', '>= 4.0.13'
-gem 'google-api-client', '~> 0.43.0'
+gem 'cookies_eu', '~> 1.7', '>= 1.7.5'
+gem 'geocoder', '~> 1.5'
+#gem 'countries', '~> 1.2', '>= 1.2.5'
 gem 'countries', require: 'countries/global'
-gem 'acts_as_tree', '~> 2.9', '>= 2.9.1'
-gem 'faraday', '~> 1.0', '>= 1.0.1'
-# This gem causes db:create to fail
-# You can enable it for tests as long as the db has been created
-group :production, :staging do
-  gem 'active_record_slave'
-end
+#gem 'new_google_recaptcha', '~> 1.2'
+gem 'recaptcha', '~> 5.5'
+#gem 'dotenv', '~> 2.7', '>= 2.7.6'
+gem 'dotenv-rails', '~> 2.7', '>= 2.7.6',  :groups => [:development, :test, :production]
+gem 'kramdown', '~> 2.3'
+gem 'redcarpet', '~> 3.5'
+gem 'pg_search', '~> 2.3'
+gem 'meta-tags', '~> 2.13' # For SEO
+gem 'breadcrumbs_on_rails', '~> 4.0' # For SEO
+gem 'sitemap_generator', '~> 6.1', '>= 6.1.2' # For SEO
+gem 'whenever', '~> 0.11.0'
+gem 'dalli', '~> 2.7', '>= 2.7.10'
+
 
 group :development do
   gem "better_errors"
   gem "binding_of_caller"
+  #gem 'dotenv-rails', '~> 2.7', '>= 2.7.2'
   gem 'annotate', '~> 2.7', '>= 2.7.5'
   gem 'faker', '~> 1.9', '>= 1.9.3'
   gem 'capistrano', '~> 3.10', '>= 3.10.2'
