@@ -43,7 +43,7 @@
 //= require lib/jquery.flot/jquery.flot
 //= require google_analytics
 // require cookies_eu
-//= require jquery.uploadPreview.min
+// require jquery.uploadPreview.min
 //= require signup
 // require cocoon
 //= require social-share-button
