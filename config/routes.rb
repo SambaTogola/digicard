@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end
   
   # Home route.
-  #root to: "front#home"
+  root to: "front#home"
 
   
   get '/robots.:format' => 'pages#robots'
@@ -103,7 +103,7 @@ Rails.application.routes.draw do
   }
 
   devise_scope :user do
-    root to: "users/sessions#new"
+    #root to: "users/sessions#new"
     authenticated :user do
       root 'dashboard#index', as: :authenticated_root
     end

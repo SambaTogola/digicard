@@ -16,19 +16,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContentt">
     <ul class="navbar-nav mr-auto">
     
-      <li class="nav-item">
-        <%= link_to "A propos", about_us_path, class: "nav-link" %>
-      </li>
-     
-      <li class="nav-item">
-        <%= link_to "Annonces", ads_list_path, class: "nav-link" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "Blog", blog_path, class: "nav-link" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "Contactez-nous", contact_path, class: "nav-link" %>
-      </li>
+      
     </ul>
 
     <ul class="navbar-nav ml-auto">
@@ -51,7 +39,7 @@
       <% end %>
       <li class="nav-item">
        <!-- <a class="nav-link" href="#">Link</a> -->
-        <%= link_to "Poster un bien", new_property_path, class: "btn btn-danger" %>
+        <%= link_to "S'inscrire" , new_user_registration_path , class: "btn btn-primary lift" %>
       </li>
      
       
