@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  subscription_pack: one
+  status: MyString
+
+two:
+  user: two
+  subscription_pack: two
+  status: MyString

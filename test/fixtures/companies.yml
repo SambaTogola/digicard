@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  company_type: one
+  activity_field: one
+  name: MyString
+  description: MyText
+  status: MyString
+  user: one
+
+two:
+  company_type: two
+  activity_field: two
+  name: MyString
+  description: MyText
+  status: MyString
+  user: two

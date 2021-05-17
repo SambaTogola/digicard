@@ -1,0 +1,11 @@
+$("ul.errors").html("");
+<% if @activity_field.errors.any? %>
+  <% @activity_field.errors.full_messages.each do |message| %>
+ 
+    $("ul.errors").append($('<div class="c-alert c-alert--danger" > ').html("<%= message.html_safe %> "));
+  <% end %>
+<% else %>
+  $(".activity-fields").html("<%= escape_javascript(render 'index') %>");
+  $("#activity-field-modal").modal("hide");
+ 
+<% end %>

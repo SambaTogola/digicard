@@ -1,0 +1,17 @@
+<% @subscription_packs.each do |subscription_pack| %>
+  <tr>
+    <td><%= subscription_pack.name %></td>
+    <td>
+        <div class="action-buttons">
+            <%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'),  edit_subscription_pack_path(subscription_pack), title: "Modifier", remote: true %>
+
+
+
+
+<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), subscription_pack_delete_path(subscription_pack), remote: true, title: "Supprimer", class: "delete" %>
+</div>
+</td>
+  </tr>
+<% end %>

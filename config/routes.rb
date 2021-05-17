@@ -1,4 +1,23 @@
 Rails.application.routes.draw do
+  resources :organization_types
+  resources :subscriptions
+  resources :subscription_types do    
+    get "delete"
+  end
+  resources :subscription_pack_items do    
+    get "delete"
+  end
+  resources :subscription_packs do    
+    get "delete"
+  end
+  resources :subscription_pack_features do    
+    get "delete"
+  end
+  
+  resources :activity_fields do    
+    get "delete"
+  end
+  
   resources :permission_items do    
     get "delete"
   end

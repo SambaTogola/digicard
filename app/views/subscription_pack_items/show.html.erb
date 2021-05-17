@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Subscription pack:</strong>
+  <%= @subscription_pack_item.subscription_pack %>
+</p>
+
+<p>
+  <strong>Subscription pack feature:</strong>
+  <%= @subscription_pack_item.subscription_pack_feature %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @subscription_pack_item.quantity %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @subscription_pack_item.status %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @subscription_pack_item.user %>
+</p>
+
+<%= link_to 'Edit', edit_subscription_pack_item_path(@subscription_pack_item) %> |
+<%= link_to 'Back', subscription_pack_items_path %>

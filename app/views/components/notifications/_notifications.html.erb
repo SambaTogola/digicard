@@ -15,21 +15,7 @@
     <div class="media-list">
         
         <!-- loop starts here -->
-        <% user_notifications.each do |notification| %>
-            <%= link_to root_path, class: "media-list-link read" do %>
-                <div class="media">
-                    <i class="fa fa-info-circle tx-40" aria-hidden="true"></i>
-
-                    <div class="media-body">
-                        <p class="noti-text">
-                            <strong><%= notification.notificable_type %></strong> 
-                            <%= notification.content %>
-                        </p>
-                        <span><%= l(notification.created_at, format: :long, locale: :"fr")%></span>
-                    </div>
-                </div><!-- media -->
-            <% end %>
-        <% end %>
+        
         <div class="dropdown-footer">
             <a href=""><i class="fa fa-angle-down"></i> Tout afficher</a>
         </div>

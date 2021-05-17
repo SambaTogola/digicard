@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @activity_field.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @activity_field.description %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @activity_field.status %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @activity_field.user %>
+</p>
+
+<%= link_to 'Edit', edit_activity_field_path(@activity_field) %> |
+<%= link_to 'Back', activity_fields_path %>

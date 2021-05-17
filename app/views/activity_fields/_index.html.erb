@@ -1,0 +1,11 @@
+<% @activity_fields.each do |activity_field| %>
+  <tr>
+    <td><%= activity_field.name %></td>
+    <td><%= activity_field.description %></td>
+    <td><%= activity_field.status %></td>
+    <td><%= activity_field.user %></td>
+    <td><%= link_to 'Show', activity_field %></td>
+    <td><%= link_to 'Edit', edit_activity_field_path(activity_field) %></td>
+    <td><%= link_to 'Destroy', activity_field, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>

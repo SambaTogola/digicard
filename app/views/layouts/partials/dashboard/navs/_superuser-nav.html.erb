@@ -6,41 +6,69 @@
         </li><!-- br-menu-item -->
 
         <li class="br-menu-item">
-          <%= link_to  raw('<i class="fa fa-building-o tx-20" aria-hidden="true"></i> <span class="menu-item-label">Mes propriétés</span>'), properties_path, class: "br-menu-link #{current? "active", properties_path}" %>
-
+          <%= link_to  raw('<i class="fa fa-id-card-o tx-20"></i> <span class="menu-item-label">Portfolios</span>'), root_path, class: "br-menu-link" %>
         </li><!-- br-menu-item -->
-
-         <li class="br-menu-item">
-          <%= link_to  raw('<i class="fa fa-ticket tx-20" aria-hidden="true"></i> <span class="menu-item-label">Reservations</span>'), root_path, class: "br-menu-link" %>
-
-        </li><!-- br-menu-item -->
-
         <li class="br-menu-item">
-          <%= link_to  raw('<i class="fa fa-bullhorn tx-20" aria-hidden="true"></i> <span class="menu-item-label">Annonces</span>'), ads_path, class: "br-menu-link #{current? "active", ads_path}" %>
-
+          <%= link_to  raw('<i class="fa fa-user-plus tx-20"></i> <span class="menu-item-label">Invitations</span>'), root_path, class: "br-menu-link" %>
         </li><!-- br-menu-item -->
 
-        <li class="br-menu-item">
-          <%= link_to  raw('<i class="fa fa-file tx-20" aria-hidden="true"></i> <span class="menu-item-label">Pages</span>'), pages_path, class: "br-menu-link #{current? "active", pages_path}" %>
 
-        </li><!-- br-menu-item -->
-
-        
-         <li class="br-menu-item">
+       <li class="br-menu-item">
           <a href="#" class="br-menu-link with-sub">
-            <i class="fa fa-thumb-tack tx-20"></i>
-            <span class="menu-item-label">Articles</span>
+            <i class="fa fa-list-alt tx-20"></i>
+            <span class="menu-item-label">Abonnements</span>
           </a><!-- br-menu-link -->
           <ul class="br-menu-sub">
             
-          
             <li class="sub-item">
-                <%= link_to  "Catégories", post_categories_path, class: "sub-link" %>
+                <%= link_to  "Liste des abonnements", subscription_types_path, class: "sub-link #{current? "active", subscription_types_path}" %>
             </li>
 
             <li class="sub-item">
-                <%= link_to  "Articles", posts_path, class: "sub-link" %>
+                <%= link_to  "Plans d'abonnement", subscription_packs_path, class: "sub-link #{current? "active", subscription_packs_path}" %>
             </li>
+
+            <li class="sub-item">
+                <%= link_to  "Fonctionalités", subscription_pack_features_path, class: "sub-link #{current? "active", subscription_pack_features_path}" %>
+            </li>
+
+            <li class="sub-item">
+                <%= link_to  "Types d'abonnement", subscription_types_path, class: "sub-link #{current? "active", subscription_types_path}" %>
+            </li>
+
+      
+
+
+          </ul>
+        </li>
+
+
+        <li class="br-menu-item">
+          <a href="#" class="br-menu-link with-sub">
+            <i class="fa fa-building-o tx-20"></i>
+            <span class="menu-item-label">Organisations</span>
+          </a><!-- br-menu-link -->
+          <ul class="br-menu-sub">
+            
+            <li class="sub-item">
+                <%= link_to  "Liste des organisations", root_path, class: "sub-link #{current? "active", root_path}" %>
+            </li>
+
+            <li class="sub-item">
+                <%= link_to  "Types d'organisation", organization_types_path, class: "sub-link #{current? "active", organization_types_path}" %>
+            </li>
+
+            
+      
+
+
+          </ul>
+        </li>
+         
+
+        
+        
+         
             
 
 
@@ -56,21 +84,25 @@
           </a><!-- br-menu-link -->
           <ul class="br-menu-sub">
             
-          
+            <li class="sub-item">
+                <%= link_to  "Rôles", roles_path, class: "sub-link #{current? "active", roles_path}" %>
+            </li>
+
             <li class="sub-item">
                 <%= link_to  "Utilisateurs", all_users_path, class: "sub-link #{current? "active", all_users_path}" %>
             </li>
 
             <li class="sub-item">
-                <%= link_to  "Types de propriétés", property_types_path, class: "sub-link #{current? "active", property_types_path}" %>
-            </li>
-            <li class="sub-item">
-                <%= link_to  "Types d'offres", offer_types_path, class: "sub-link #{current? "active", offer_types_path}" %>
+                <%= link_to  "Domaines d'activité", activity_fields_path, class: "sub-link #{current? "active", activity_fields_path}" %>
             </li>
 
             <li class="sub-item">
-                <%= link_to  "Unités", unities_path, class: "sub-link #{current? "active", unities_path}" %>
+                <%= link_to  "Serveur SMTP", root_path, class: "sub-link #{current? "active", root_path}" %>
             </li>
+
+            
+
+            
 
 
 

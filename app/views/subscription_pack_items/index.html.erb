@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Subscription Pack Items</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Subscription pack</th>
+      <th>Subscription pack feature</th>
+      <th>Quantity</th>
+      <th>Status</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @subscription_pack_items.each do |subscription_pack_item| %>
+      <tr>
+        <td><%= subscription_pack_item.subscription_pack %></td>
+        <td><%= subscription_pack_item.subscription_pack_feature %></td>
+        <td><%= subscription_pack_item.quantity %></td>
+        <td><%= subscription_pack_item.status %></td>
+        <td><%= subscription_pack_item.user %></td>
+        <td><%= link_to 'Show', subscription_pack_item %></td>
+        <td><%= link_to 'Edit', edit_subscription_pack_item_path(subscription_pack_item) %></td>
+        <td><%= link_to 'Destroy', subscription_pack_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Subscription Pack Item', new_subscription_pack_item_path %>

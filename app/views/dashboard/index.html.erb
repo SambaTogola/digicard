@@ -1,6 +1,6 @@
 
 <% if current_user.superuser? %>
-    <%= render "dashboard/partials/agency_dashboard" %>
+    
 <% elsif current_user.agency? %>
     <%= render "dashboard/partials/user-dashboard" %>
 <% elsif current_user.customer? %>

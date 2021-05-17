@@ -50,11 +50,11 @@ class User < ApplicationRecord
   has_one :profile, dependent: :destroy
   belongs_to :role
   
-  has_many :properties, dependent: :destroy
-  has_many :property_types, dependent: :destroy
-  has_many :offer_types, dependent: :destroy
-  has_many :unities, dependent: :destroy
-  has_many :page_categories, dependent: :destroy
+  has_many :subscription_types, dependent: :destroy
+  has_many :subscription_packs, dependent: :destroy
+  has_many :activity_fields, dependent: :destroy
+  has_many :subscription_pack_features, dependent: :destroy
+  has_many :organization_types, dependent: :destroy
   has_many :pages, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :post_categories, dependent: :destroy

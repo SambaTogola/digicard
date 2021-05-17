@@ -2,9 +2,7 @@ class DashboardController < ApplicationController
 	before_action :authenticate_user!
 	layout("dashboard")
 	def index
-		@properties = current_user.properties
-		@inquiry_forms = current_user.recipient_inquiry_forms
-		@ads = []
+		
 	end
 	def show
 	end
