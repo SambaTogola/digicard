@@ -55,40 +55,10 @@ $(document).on('turbolinks:load', function(){
 });
 
 
-$(document).on('turbolinks:load', function(){
-    $.uploadPreview({
-      input_field: "#image-upload",   // Default: .image-upload
-      preview_box: "#image-preview",  // Default: .image-preview
-      label_field: "#image-label",    // Default: .image-label
-      label_default: "Choisir une image",   // Default: Choose File
-      label_selected: "Modifier l'image",  // Default: Change File
-      no_label: false                 // Default: false
-    });
-});
 
-$(document).on('turbolinks:load', function(){
-    $('#btn-upload').click(function(e){
-        e.preventDefault();
-        $('#profile-image-upload').click();
-    }
-    );
-});
 
-$(document).on('turbolinks:load', function(){
-    $('#profile-image-upload').on('change', function(event) {
-      var files = event.target.files;
-      var image = files[0]
-      var reader = new FileReader();
-      reader.onload = function(file) {
-        var img = new Image();
-        console.log(file);
-        img.src = file.target.result;
-        $('#profile-image-preview').html(img);
-      }
-      reader.readAsDataURL(image);
-      console.log(files);
-    });
-  });
+
+
 
 
 $(document).on('turbolinks:load', function() {
@@ -128,25 +98,7 @@ $(document).on('turbolinks:load', function() {
           });
   });
 
-  // Enable chosen js for turbolinks
-$(document).on('turbolinks:load', function() {
-	$('#arrival-modal').on('shown.bs.modal', function() {
-       
-
-        $("#arrival_real_quantity").on('focusout', function(){
-            initial_quantity = $('#arrival_initial_quantity').val();
-            real_quantity = $('#arrival_real_quantity').val();
-
-                lost_quantity =  initial_quantity - real_quantity ;
-                $("#arrival_lost_quantity").val(lost_quantity);
-           
-            
-        });
-
-      
-    })
-});
-
+ 
 
 $(document).on('turbolinks:load', function() {  
 

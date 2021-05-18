@@ -74,7 +74,17 @@ module ApplicationHelper
 	end
 
 
+	def smtp_config?
+		config = SmtpConfig.take
 
+		if config.present? && config.smtp_user_name.present? &&  config.smtp_user_password.present? && 
+			config.smtp_address.present? && config.smtp_port
+		
+			true 
+		else
+			false
+		end
+	end
 
 
 	def property_type(id)

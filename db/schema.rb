@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_17_080842) do
+ActiveRecord::Schema.define(version: 2021_05_18_100521) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -169,6 +169,22 @@ ActiveRecord::Schema.define(version: 2021_05_17_080842) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "smtp_configs", force: :cascade do |t|
+    t.string "smtp_host"
+    t.string "smtp_user_name"
+    t.string "smtp_user_password"
+    t.string "smtp_domain"
+    t.string "smtp_address"
+    t.integer "smtp_port"
+    t.string "smtp_authentification"
+    t.boolean "smtp_enable_starttls_auto"
+    t.boolean "smtp_ssl"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_smtp_configs_on_user_id"
+  end
+
   create_table "subscription_pack_features", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -269,6 +285,7 @@ ActiveRecord::Schema.define(version: 2021_05_17_080842) do
   add_foreign_key "permissions", "features"
   add_foreign_key "permissions", "roles"
   add_foreign_key "profiles", "users"
+  add_foreign_key "smtp_configs", "users"
   add_foreign_key "subscription_pack_features", "users"
   add_foreign_key "subscription_pack_items", "subscription_pack_features"
   add_foreign_key "subscription_pack_items", "subscription_packs"

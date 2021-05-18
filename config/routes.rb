@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :smtp_configs
   resources :organization_types
   resources :subscriptions
   resources :subscription_types do    
