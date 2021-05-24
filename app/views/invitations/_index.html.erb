@@ -1,15 +1,14 @@
 <% @invitations.each do |invitation| %>
   <tr>
-    <td><%= invitation.organization %></td>
-    <td><%= invitation.service %></td>
+    <td><%= invitation.created_at.strftime("%d/%m/%Y") %></td>
+    <td><%= invitation.organization.name %></td>
+    <td><%= invitation.service.name %></td>
     <td><%= invitation.position %></td>
+    <td><%= user(invitation.recipient_id).login %></td>
     <td><%= invitation.status %></td>
-    <td><%= invitation.user %></td>
-    <td><%= invitation.recipient %></td>
     <td>
         <div class="action-buttons">
-            <%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
-'),  edit_invitation_path(invitation), title: "Modifier", remote: true %>
+            
 
 
 

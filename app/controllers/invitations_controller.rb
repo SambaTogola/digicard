@@ -1,6 +1,8 @@
 class InvitationsController < ApplicationController
-   before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:confirm_invitation]
   before_action :set_invitation, only: %i[ show edit update destroy ]
+  before_action :set_recipient, only: %i[ new ]
+
   layout "dashboard"
 
   # GET /invitations or /invitations.json
@@ -14,11 +16,45 @@ class InvitationsController < ApplicationController
 
   # GET /invitations/new
   def new
+    @organizations = current_user.organizations
+    @services = []
     @invitation = Invitation.new
   end
 
   # GET /invitations/1/edit
   def edit
+  end
+
+  def confirm_invitation
+    invitation_uid = params[:uid]
+    invitation = Invitation.find_by(uid: invitation_uid)
+
+    member = Member.new
+    member.invitation_id = invitation.invitation_id
+    member.organization_id = invitation.organization_id
+    member.service_id = invitation.service_id
+    member.position = invitation.position
+    member.user_id = invitation.recipient_id
+    member.status = "Actif"
+
+    if member.save
+      invitation.update_column(:status,"Acceptée")
+      redirect_to root_path
+    end
+
+  end
+
+  def search_users
+    @search_term = params[:term]
+
+    @users = User.search_by_login_or_email(@search_term)
+
+
+  end
+
+  def get_services
+    puts "ID: #{params[:id]}"
+    @services = Service.where(organization_id: params[:id])
   end
 
   # POST /invitations or /invitations.json
@@ -28,7 +64,7 @@ class InvitationsController < ApplicationController
     respond_to do |format|
       if @invitation.save
         @invitations = Invitation.all
-        format.html { redirect_to @invitation, notice: "Invitation was successfully created." }
+        format.html { redirect_to invitations_path, notice: "Invitation was successfully sended." }
         format.json { render :show, status: :created, location: @invitation }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -69,8 +105,12 @@ class InvitationsController < ApplicationController
       @invitation = Invitation.find(params[:id])
     end
 
+    def set_recipient
+      @recipient ||= User.find_by(uid: params[:user_id])
+    end
+
     # Only allow a list of trusted parameters through.
     def invitation_params
-      params.require(:invitation).permit(:organization_id, :service_id, :position, :status, :user_id, :recipient_id)
+      params.require(:invitation).permit(:organization_id, :service_id, :position, :status,  :recipient_id)
     end
 end

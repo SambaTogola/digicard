@@ -1,10 +1,19 @@
 Rails.application.routes.draw do
 
+
+  get "invitations/search-users" => "invitations#search_users", as: :search_users
+
+  get "members/organization/:organization_id" => "members#index", as: :organization_members
+
   resources :members do    
     get "delete"
   end
   resources :invitations do    
     get "delete"
+
+    collection do    
+      get "get_services" => "invitations#get_services"
+    end
   end
   resources :pages do    
     get "delete"

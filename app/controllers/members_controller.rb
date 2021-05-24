@@ -1,9 +1,15 @@
 class MembersController < ApplicationController
+    before_action :authenticate_user!
+
   before_action :set_member, only: %i[ show edit update destroy ]
+  before_action :set_organization, only: %i[ index new  ]
+    layout "dashboard"
+
+
 
   # GET /members or /members.json
   def index
-    @members = Member.all
+    @members = Member.where(organization_id: @organization.id)
   end
 
   # GET /members/1 or /members/1.json
@@ -61,6 +67,12 @@ class MembersController < ApplicationController
     def set_member
       @member = Member.find(params[:id])
     end
+
+    def set_organization
+      @organization ||= Organization.find_by(uid: params[:organization_id])
+    end
+
+
 
     # Only allow a list of trusted parameters through.
     def member_params

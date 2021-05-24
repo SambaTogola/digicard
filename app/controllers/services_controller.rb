@@ -26,7 +26,7 @@ class ServicesController < ApplicationController
 
   # GET /services/new
   def new
-    @services = Service.where(organization_id: params[:organization_id])
+    @services = Service.where(organization_id: @organization.id)
     @service = Service.new
   end
 
@@ -103,7 +103,7 @@ class ServicesController < ApplicationController
 
     def get_organization
       
-        @organization ||= Organization.find(params[:organization_id])
+        @organization ||= Organization.find_by(uid: params[:organization_id])
         
         
     end

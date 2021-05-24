@@ -3,8 +3,8 @@ class CreatePages < ActiveRecord::Migration[5.2]
     create_table :pages do |t|
       t.string :uid
       t.string :slug
-      t.string :name
-      t.text :contant
+      t.string :title
+      t.text :content
       t.string :status
       t.references :user, foreign_key: true
 

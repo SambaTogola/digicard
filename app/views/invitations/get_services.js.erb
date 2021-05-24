@@ -1,0 +1,6 @@
+
+$('#invitation_service_id').empty();
+$('#invitation_service_id').append( $('<option value="">Sélectionner</option>'));
+<% @services.each do |service| %>
+  $('#invitation_service_id').append($('<option value="<%= service.id %>"><%= service.name %></option>'));
+<% end %>

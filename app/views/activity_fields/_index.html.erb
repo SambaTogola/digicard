@@ -1,11 +1,18 @@
 <% @activity_fields.each do |activity_field| %>
   <tr>
     <td><%= activity_field.name %></td>
-    <td><%= activity_field.description %></td>
-    <td><%= activity_field.status %></td>
-    <td><%= activity_field.user %></td>
-    <td><%= link_to 'Show', activity_field %></td>
-    <td><%= link_to 'Edit', edit_activity_field_path(activity_field) %></td>
-    <td><%= link_to 'Destroy', activity_field, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    
+    <td>
+	    <div class="action-buttons">
+			<%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'),  edit_activity_field_path(activity_field), title: "Modifier", remote: true %>
+
+
+
+
+<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), activity_field_delete_path(activity_field), remote: true, title: "Supprimer", class: "delete" %>
+</div>
+</td>
   </tr>
 <% end %>

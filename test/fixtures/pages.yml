@@ -5,8 +5,8 @@
 #  id         :bigint           not null, primary key
 #  uid        :string
 #  slug       :string
-#  name       :string
-#  contant    :text
+#  title      :string
+#  content    :text
 #  status     :string
 #  user_id    :bigint
 #  created_at :datetime         not null

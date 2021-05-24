@@ -1,0 +1,23 @@
+<% if @users %>
+<% @users.each do |user| %>
+  <tr>
+    
+    <td><%= user.login %></td>
+    <td><%= user.email %></td>
+   
+    <td>
+        <div class="action-buttons">
+            <%= link_to raw('<i class="fa fa-user-plus" aria-hidden="true"></i> Inviter
+'),  new_invitation_path(user_id: user.uid), title: "Envoyer une invitation", remote: true %>
+
+
+
+
+
+</div>
+</td>
+  </tr>
+<% end %>
+
+
+<% end %>

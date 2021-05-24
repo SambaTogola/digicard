@@ -99,6 +99,10 @@ module ApplicationHelper
 		Service.find(id)
 	end
 
+	def user(id)
+		User.find(id)
+	end
+
 
 	def user_notifications
 		current_user.recipient_notifications.order(created_at: 'DESC').take(5)

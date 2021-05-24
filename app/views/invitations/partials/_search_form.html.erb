@@ -1,0 +1,26 @@
+
+    <%= form_with(url: search_users_path, method: "get", class: "search-form", local: true) do |f| %>
+
+    <div class="row ">
+
+        
+            <div class="col-md-9">
+                <div class="form-group">
+                    <%= f.text_field :term,  value: (@search_term if @search_term) , class: "form-control", placeholder: "Saisir le login ou l'email"  %>
+                </div>
+            </div>
+
+
+            
+            <div class="col-md-3">
+                <div class="form-group">
+                    <%= f.submit("RECHERCHER", class: "btn btn-primary btn-block") %>
+                </div>
+            </div>
+
+    
+
+        
+        </div>
+    <% end %>
+    

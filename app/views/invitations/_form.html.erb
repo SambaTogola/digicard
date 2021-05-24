@@ -1,47 +1,37 @@
 <%= form_with(model: invitation, local: true) do |form| %>
-  <% if invitation.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(invitation.errors.count, "error") %> prohibited this invitation from being saved:</h2>
+  <div class="modal-body">
+    <ul class="errors">
+    </ul>
 
-      <ul>
-      <% invitation.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <div class="form-group">
 
-  <div class="field">
-    <%= form.label :organization_id %>
-    <%= form.text_field :organization_id %>
+  <div class="form-group">
+    <%= form.label :organization_id, "Organisation", class: "required" %>
+    <%= form.collection_select(:organization_id, @organizations, :id, :name, {prompt: "Sélectionner"}, class: "form-control", style: "width: 100%") %> 
+
   </div>
 
-  <div class="field">
-    <%= form.label :service_id %>
-    <%= form.text_field :service_id %>
+  <div class="form-group">
+    <%= form.label :service_id, "Service", class: "required" %>
+    <%= form.collection_select(:service_id, @services, :id, :name, {prompt: "Sélectionner"}, class: "form-control", style: "width: 100%") %> 
+
   </div>
 
-  <div class="field">
-    <%= form.label :position %>
-    <%= form.text_field :position %>
+  <div class="form-group">
+    <%= form.label :position, "Poste", class: "required" %>
+    <%= form.text_field :position, class: "form-control", placeholder: "Poste", required: true %>
   </div>
 
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status %>
+ 
+
+  <div class="form-group">
+    
+    <%= form.hidden_field :recipient_id, value: (@recipient.id if @recipient) %>
   </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :recipient_id %>
-    <%= form.text_field :recipient_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  </div><!-- modal body -->
+  <div class="modal-footer">
+    <%= link_to "Annuler", "#", class: "btn btn-secondary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1", data: {dismiss: "modal"} %>
+    <%= form.submit "Envoyer",  class: "btn btn-primary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1",  "data-loading-text"=>"Loading...", autocomplete: "off" %>
   </div>
 <% end %>

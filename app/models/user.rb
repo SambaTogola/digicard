@@ -29,6 +29,7 @@
 #
 
 class User < ApplicationRecord
+  include PgSearch::Model
   # Include shared utils.
   include SharedUtils::Generate
 
@@ -61,7 +62,7 @@ class User < ApplicationRecord
   has_many :services, dependent: :destroy
   has_many :portfolios, dependent: :destroy
   has_many :invitations, dependent: :destroy
-	#has_many :recipient_inquiry_forms, :class_name => "InquiryForm", :foreign_key => :recipient_id
+	has_many :recipient_invitations, :class_name => "Invitation", :foreign_key => :recipient_id
 	#has_many :recipient_notifications, :class_name => "Notification", :foreign_key => :recipient_id
 
 
@@ -124,5 +125,13 @@ class User < ApplicationRecord
       user.skip_confirmation!
     end
   end
+
+
+
+  pg_search_scope :search_by_login_or_email, against: [:login, :email],  using: {
+    tsearch: {
+      prefix: true
+    }
+  }
  
 end

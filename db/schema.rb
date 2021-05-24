@@ -159,8 +159,8 @@ ActiveRecord::Schema.define(version: 2021_05_24_101607) do
   create_table "pages", force: :cascade do |t|
     t.string "uid"
     t.string "slug"
-    t.string "name"
-    t.text "contant"
+    t.string "title"
+    t.text "content"
     t.string "status"
     t.bigint "user_id"
     t.datetime "created_at", null: false

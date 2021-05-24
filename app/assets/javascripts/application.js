@@ -45,8 +45,10 @@
 // require cookies_eu
 // require jquery.uploadPreview.min
 //= require signup
-// require cocoon
+//= require cocoon
 //= require social-share-button
+
+//= require invitations
 
 // For Geocomplete
 $(document).on('turbolinks:load', function(){
@@ -125,3 +127,19 @@ $(document).on('turbolinks:load', function() {
     }
 
 });
+
+
+  function ajaxFilterByID(source, route, verb){
+  console.log("Source: ", source);
+  $(source).on("change", function() {
+      $.ajax({
+          type: verb,
+          headers: {
+              'X-CSRF-Token': document.querySelector("meta[name=csrf-token]").content
+              },
+          dataType: 'script',
+          url: route,
+          data: { id: $(source + ' option:selected').val()}
+      });
+  });
+};
