@@ -1,0 +1,11 @@
+$("ul.errors").html("");
+<% if @portfolio.errors.any? %>
+  <% @portfolio.errors.full_messages.each do |message| %>
+ 
+    $("ul.errors").append($('<div class="c-alert c-alert--danger" > ').html("<%= message.html_safe %> "));
+  <% end %>
+<% else %>
+  $(".portfolios").html("<%= escape_javascript(render 'index') %>");
+  $("#portfolio-modal").modal("hide");
+ 
+<% end %>

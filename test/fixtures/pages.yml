@@ -1,0 +1,32 @@
+# == Schema Information
+#
+# Table name: pages
+#
+#  id         :bigint           not null, primary key
+#  uid        :string
+#  slug       :string
+#  name       :string
+#  contant    :text
+#  status     :string
+#  user_id    :bigint
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  uid: MyString
+  slug: MyString
+  name: MyString
+  contant: MyText
+  status: MyString
+  user: one
+
+two:
+  uid: MyString
+  slug: MyString
+  name: MyString
+  contant: MyText
+  status: MyString
+  user: two

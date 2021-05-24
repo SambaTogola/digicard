@@ -1,4 +1,6 @@
 class SubscriptionsController < ApplicationController
+  before_action :authenticate_user!
+  layout "dashboard"
   before_action :set_subscription, only: %i[ show edit update destroy ]
 
   # GET /subscriptions or /subscriptions.json
@@ -12,7 +14,10 @@ class SubscriptionsController < ApplicationController
 
   # GET /subscriptions/new
   def new
+    @subscription_packs = SubscriptionPack.all
+    @subscription_types = SubscriptionType.all
     @subscription = Subscription.new
+    #render layout: "front"
   end
 
   # GET /subscriptions/1/edit
@@ -21,15 +26,17 @@ class SubscriptionsController < ApplicationController
 
   # POST /subscriptions or /subscriptions.json
   def create
-    @subscription = Subscription.new(subscription_params)
+    @subscription = current_user.subscriptions.build(subscription_params)
 
     respond_to do |format|
       if @subscription.save
         format.html { redirect_to @subscription, notice: "Subscription was successfully created." }
         format.json { render :show, status: :created, location: @subscription }
+        format.js
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @subscription.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -64,6 +71,6 @@ class SubscriptionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def subscription_params
-      params.require(:subscription).permit(:user_id, :subscription_pack_id, :status)
+      params.require(:subscription).permit(:subscription_pack_id, :subscription_type_id, :status)
     end
 end

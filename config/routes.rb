@@ -1,5 +1,19 @@
 Rails.application.routes.draw do
 
+  resources :members do    
+    get "delete"
+  end
+  resources :invitations do    
+    get "delete"
+  end
+  resources :pages do    
+    get "delete"
+  end
+  
+  resources :portfolios do    
+    get "delete"
+  end
+
   get "services/organization/:organization_id" => "services#index", as: :organization_services
 
   resources :services do    

@@ -11,19 +11,37 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= form.label :title, "Titre", class: "required" %>
-    <%= form.text_field :title, class: "form-control", placeholder: "Titre", required: true %>
+  <div class="field">
+    <%= form.label :uid %>
+    <%= form.text_field :uid %>
   </div>
 
-  <div class="form-group">
-    <%= form.label :content, "Contenu", class: "required" %>
-    <%= form.cktext_area :content, class: "form-control"  %>
+  <div class="field">
+    <%= form.label :slug %>
+    <%= form.text_field :slug %>
   </div>
 
-  
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
 
- <div class="form-group pull-right">
-            <%= form.submit "Enregistrer", class: "btn btn-primary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1",  "data-loading-text"=>"Loading...", autocomplete: "off" %>
-    </div>
+  <div class="field">
+    <%= form.label :contant %>
+    <%= form.text_area :contant %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.text_field :status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
 <% end %>

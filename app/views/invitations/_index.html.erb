@@ -1,0 +1,22 @@
+<% @invitations.each do |invitation| %>
+  <tr>
+    <td><%= invitation.organization %></td>
+    <td><%= invitation.service %></td>
+    <td><%= invitation.position %></td>
+    <td><%= invitation.status %></td>
+    <td><%= invitation.user %></td>
+    <td><%= invitation.recipient %></td>
+    <td>
+        <div class="action-buttons">
+            <%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'),  edit_invitation_path(invitation), title: "Modifier", remote: true %>
+
+
+
+
+<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), invitation_delete_path(invitation), remote: true, title: "Supprimer", class: "delete" %>
+</div>
+</td>
+  </tr>
+<% end %>

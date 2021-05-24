@@ -6,10 +6,10 @@
         </li><!-- br-menu-item -->
 
         <li class="br-menu-item">
-          <%= link_to  raw('<i class="fa fa-id-card-o tx-20"></i> <span class="menu-item-label">Portfolios</span>'), root_path, class: "br-menu-link" %>
+          <%= link_to  raw('<i class="fa fa-id-card-o tx-20"></i> <span class="menu-item-label">Portfolios</span>'), portfolios_path, class: "br-menu-link" %>
         </li><!-- br-menu-item -->
         <li class="br-menu-item">
-          <%= link_to  raw('<i class="fa fa-user-plus tx-20"></i> <span class="menu-item-label">Invitations</span>'), root_path, class: "br-menu-link" %>
+          <%= link_to  raw('<i class="fa fa-user-plus tx-20"></i> <span class="menu-item-label">Invitations</span>'), invitations_path, class: "br-menu-link" %>
         </li><!-- br-menu-item -->
 
 
@@ -21,7 +21,7 @@
           <ul class="br-menu-sub">
             
             <li class="sub-item">
-                <%= link_to  "Liste des abonnements", subscription_types_path, class: "sub-link #{current? "active", subscription_types_path}" %>
+                <%= link_to  "Liste des abonnements", subscriptions_path, class: "sub-link #{current? "active", subscriptions_path}" %>
             </li>
 
             <li class="sub-item">

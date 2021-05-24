@@ -57,8 +57,10 @@ class User < ApplicationRecord
   has_many :organization_types, dependent: :destroy
   has_many :pages, dependent: :destroy
   has_many :organizations, dependent: :destroy
-  has_many :post_categories, dependent: :destroy
+  has_many :subscriptions, dependent: :destroy
   has_many :services, dependent: :destroy
+  has_many :portfolios, dependent: :destroy
+  has_many :invitations, dependent: :destroy
 	#has_many :recipient_inquiry_forms, :class_name => "InquiryForm", :foreign_key => :recipient_id
 	#has_many :recipient_notifications, :class_name => "Notification", :foreign_key => :recipient_id
 

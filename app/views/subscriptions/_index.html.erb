@@ -1,0 +1,20 @@
+<% @subscriptions.each do |subscription| %>
+  <tr>
+   
+    <td><%= subscription.subscription_pack.name %></td>
+    <td><%= subscription.subscription_type.name if subscription.subscription_type %></td>
+   
+    <td>
+        <div class="action-buttons">
+            <%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'),  edit_subscription_path(subscription), title: "Modifier", remote: true %>
+
+
+
+
+<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), subscription_delete_path(subscription), remote: true, title: "Supprimer", class: "delete" %>
+</div>
+</td>
+  </tr>
+<% end %>

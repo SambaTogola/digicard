@@ -13,6 +13,7 @@
 #  state                :string
 #  country              :string
 #  phone                :string
+#  email                :string
 #  fax                  :string
 #  zip_code             :string
 #  web_site             :string

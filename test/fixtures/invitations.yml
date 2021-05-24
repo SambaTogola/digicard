@@ -1,0 +1,33 @@
+# == Schema Information
+#
+# Table name: invitations
+#
+#  id              :bigint           not null, primary key
+#  organization_id :bigint
+#  service_id      :bigint
+#  position        :string
+#  description     :text
+#  status          :string
+#  user_id         :bigint
+#  recipient_id    :bigint
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  organization: one
+  service: one
+  position: MyString
+  status: MyString
+  user: one
+  recipient: one
+
+two:
+  organization: two
+  service: two
+  position: MyString
+  status: MyString
+  user: two
+  recipient: two
