@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_18_100521) do
+ActiveRecord::Schema.define(version: 2021_05_23_154037) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,30 +81,6 @@ ActiveRecord::Schema.define(version: 2021_05_18_100521) do
     t.index ["type"], name: "index_ckeditor_assets_on_type"
   end
 
-  create_table "companies", force: :cascade do |t|
-    t.bigint "company_type_id"
-    t.bigint "activity_field_id"
-    t.string "name"
-    t.text "description"
-    t.string "status"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["activity_field_id"], name: "index_companies_on_activity_field_id"
-    t.index ["company_type_id"], name: "index_companies_on_company_type_id"
-    t.index ["user_id"], name: "index_companies_on_user_id"
-  end
-
-  create_table "company_types", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.string "status"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_company_types_on_user_id"
-  end
-
   create_table "features", force: :cascade do |t|
     t.string "uid"
     t.string "name"
@@ -123,6 +99,30 @@ ActiveRecord::Schema.define(version: 2021_05_18_100521) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_organization_types_on_user_id"
+  end
+
+  create_table "organizations", force: :cascade do |t|
+    t.string "uid"
+    t.string "name"
+    t.bigint "organization_type_id"
+    t.bigint "activity_field_id"
+    t.string "slogan"
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.string "country"
+    t.string "phone"
+    t.string "email"
+    t.string "fax"
+    t.string "zip_code"
+    t.string "web_site"
+    t.string "status"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_field_id"], name: "index_organizations_on_activity_field_id"
+    t.index ["organization_type_id"], name: "index_organizations_on_organization_type_id"
+    t.index ["user_id"], name: "index_organizations_on_user_id"
   end
 
   create_table "permission_items", force: :cascade do |t|
@@ -167,6 +167,20 @@ ActiveRecord::Schema.define(version: 2021_05_18_100521) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.bigint "organization_id"
+    t.string "name"
+    t.string "description"
+    t.string "status"
+    t.bigint "parent_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_id"], name: "index_services_on_organization_id"
+    t.index ["parent_id"], name: "index_services_on_parent_id"
+    t.index ["user_id"], name: "index_services_on_user_id"
   end
 
   create_table "smtp_configs", force: :cascade do |t|
@@ -276,15 +290,16 @@ ActiveRecord::Schema.define(version: 2021_05_18_100521) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "activity_fields", "users"
-  add_foreign_key "companies", "activity_fields"
-  add_foreign_key "companies", "company_types"
-  add_foreign_key "companies", "users"
-  add_foreign_key "company_types", "users"
   add_foreign_key "organization_types", "users"
+  add_foreign_key "organizations", "activity_fields"
+  add_foreign_key "organizations", "organization_types"
+  add_foreign_key "organizations", "users"
   add_foreign_key "permission_items", "permissions"
   add_foreign_key "permissions", "features"
   add_foreign_key "permissions", "roles"
   add_foreign_key "profiles", "users"
+  add_foreign_key "services", "organizations"
+  add_foreign_key "services", "users"
   add_foreign_key "smtp_configs", "users"
   add_foreign_key "subscription_pack_features", "users"
   add_foreign_key "subscription_pack_items", "subscription_pack_features"

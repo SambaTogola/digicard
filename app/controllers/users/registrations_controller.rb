@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  prepend_before_action :check_captcha, only: [:create] # Change this to be any actions you want to protect.
+  #prepend_before_action :check_captcha, only: [:create] # Change this to be any actions you want to protect.
   before_action :configure_sign_up_params, only: [:create]
 
   # before_action :configure_account_update_params, only: [:update]
@@ -18,14 +18,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create
 
-      profile_attributes = sign_up_params["profile_attributes"]
-      profile_type = profile_attributes["profile_type"]
+      #profile_attributes = sign_up_params["profile_attributes"]
+      #profile_type = profile_attributes["profile_type"]
       role_id = sign_up_params[:role_id]
 
 
 
 
-      puts "ROLE ID: #{role_id}"
+      #puts "ROLE ID: #{role_id}"
 
 
       unless role_id.present?
@@ -93,7 +93,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-    devise_parameter_sanitizer.permit(:sign_up, keys: [ profile_attributes: [ :profile_type, :company_name, :first_name, :last_name ]])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:login,  profile_attributes: [ :first_name, :last_name ]])
     #devise_parameter_sanitizer.permit(:account_update, keys: [:login, :company, :city, :address, :phone, :avatar])
    end
 

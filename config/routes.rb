@@ -1,7 +1,21 @@
 Rails.application.routes.draw do
+
+  get "services/organization/:organization_id" => "services#index", as: :organization_services
+
+  resources :services do    
+    get "delete"
+  end
+
+  resources :organizations  do    
+    get "delete"
+  end
   resources :smtp_configs
-  resources :organization_types
-  resources :subscriptions
+  resources :organization_types  do    
+    get "delete"
+  end
+  resources :subscriptions  do    
+    get "delete"
+  end
   resources :subscription_types do    
     get "delete"
   end
@@ -11,6 +25,7 @@ Rails.application.routes.draw do
   resources :subscription_packs do    
     get "delete"
   end
+  
   resources :subscription_pack_features do    
     get "delete"
   end
@@ -52,11 +67,10 @@ Rails.application.routes.draw do
   get "ad/success" => "ads#success", as: :ad_success
 
   get "/suscribe" => "pages#newsletter_suscribe", as: :suscribe
-  get "/property/:id" => "properties#show", as: :property_show
   get "/post/:slug" => "blog#show", as: :post_show
-  get "ad/:slug" => "ads#show", as: :ad_show
+  
   get "/search" => "searches#search_properties", as: :search_properties
-  get "properties/all" => "searches#all_properties", as: :all_properties
+  
   get "/about-us" => "pages#about_us", as: :about_us
   get "/how-it-work" => "pages#how_it_work", as: :how_it_work
   get "/cgu" => "pages#cgu", as: :cgu
@@ -67,7 +81,7 @@ Rails.application.routes.draw do
   get "/faq" => "pages#faq", as: :faq
   get "/privacy-policy" => "pages#privacy_policy", as: :privacy_policy
   get "/partenaires" => "pages#partenaires", as: :partnaires
-  get "/services" => "pages#services", as: :services
+  
   #get '/inquiry_form' => 'contact_email#inquiry', as: :inquiry_email
   #get "/properties/all" => "front#properties", as: :load_all_properties
   get "/profile/:login/edit" => "profile#edit", as: :user_profile

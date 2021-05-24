@@ -1,28 +1,39 @@
-<%= form_with(model: organization, local: true) do |form| %>
+<%= form_with(model: organization, local: false) do |form| %>
   <div class="modal-body">
     <ul class="errors">
     </ul>
 
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-12">
         <div class="form-group">
           <%= form.label :organization_type_id, "Type d'oragnisation", class: "required" %>
           <%= form.collection_select(:organization_type_id, @organization_types, :id, :name, {prompt: "Sélectionner"}, class: "form-control", style: "width: 100%") %> 
         </div>
       </div>
 
-      <div class="col-md-6">
+      <div class="col-md-12">
+        <div class="form-group">
+          <%= form.label :activity_field_id, "Secteur d'activité", class: "required" %>
+          <%= form.collection_select(:activity_field_id, @activity_fields, :id, :name, {prompt: "Sélectionner"}, class: "form-control", style: "width: 100%") %> 
+        </div>
+      </div>
+
+
+      <div class="col-md-12">
         <div class="form-group">
           <%= form.label :name, "Nom", class: "required" %>
           <%= form.text_field :name, class: "form-control", placeholder: "Nom", required: true %>
         </div>
+
+        <div class="form-group">
+          <%= form.label :address, "Adresse" %>
+          <%= form.text_field :address, class: "form-control", placeholder: "Adresse" %>
+        </div>
+
       </div>
     </div>
 
-  <div class="form-group">
-    <%= form.label :address, "Adresse" %>
-    <%= form.text_field :address, class: "form-control", placeholder: "Adresse" %>
-  </div>
+  
 
   <div class="row">
     <div class="col-md-6">
@@ -50,29 +61,16 @@
     </div>
 
     <div class="col-md-6">
-      <div class="form-group">
-        <%= form.label :fax %>
-        <%= form.text_field :fax, class: "form-control", placeholder: "Fax" %>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-6">
-      <div class="form-group">
-        <%= form.label :zip_code, "Code postal" %>
-        <%= form.text_field :zip_code, class: "form-control", placeholder: "Code Postal" %>
-      </div>
-    </div>
-
-    <div class="col-md-6">
 
       <div class="form-group">
         <%= form.label :web_site, "Site web" %>
         <%= form.text_field :web_site, class: "form-control", placeholder: "Site web" %>
       </div>
     </div>
+    
   </div>
+
+  
 
   <div class="row">
     <div class="col-md-12">

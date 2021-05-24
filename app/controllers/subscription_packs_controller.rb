@@ -16,10 +16,12 @@ class SubscriptionPacksController < ApplicationController
   # GET /subscription_packs/new
   def new
     @subscription_pack = SubscriptionPack.new
+    @subscription_pack_features = SubscriptionPackFeature.all
   end
 
   # GET /subscription_packs/1/edit
   def edit
+    @subscription_pack_features = SubscriptionPackFeature.all
   end
 
   # POST /subscription_packs or /subscription_packs.json
@@ -77,6 +79,6 @@ class SubscriptionPacksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def subscription_pack_params
-      params.require(:subscription_pack).permit(:name, :price, :description, :status, :user_id)
+      params.require(:subscription_pack).permit(:name, :price, :description,   subscription_pack_items_attributes: [:id,  :subscription_pack_feature_id, :quantity, :_destroy])
     end
 end

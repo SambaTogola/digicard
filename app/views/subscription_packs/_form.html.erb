@@ -3,10 +3,68 @@
     <ul class="errors">
     </ul>
 
-    <div class="form-group">
-      <%= form.label :name, "Nom", class: "required" %>
-      <%= form.text_field :name, class: "form-control", placeholder: "Nom", required: true %>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <%= form.label :name, "Nom", class: "required" %>
+          <%= form.text_field :name, class: "form-control", placeholder: "Nom", required: true %>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="form-group">
+          <%= form.label :price, "Prix", class: "required" %>
+          <%= form.number_field :price, class: "form-control", placeholder: "Prix" %>
+        </div>
+      </div>
+
+        
+      </div>
+    
+
+    <div class="row">
+      <div class="col-md-12">
+
+        <div class="form-group">
+          <%= form.label :description, "Description" %>
+          <%= form.text_area :description, class: "form-control", placeholder: "Description" %>
+        </div>
+
+      </div>
     </div>
+
+
+     <!-- Fieldset informations -->
+  <fieldset>
+    <legend>Contenu du pack</legend>
+    <div class="row">
+      <div class="feature-items">
+
+        <table class="table  responsive ">
+          <thead>
+            <tr role="row">
+              <th>Fonctionalité</th>
+              <th>Limite</th>
+              
+            </tr>
+          </thead>
+          <tbody class="items">
+            <%= form.fields_for :subscription_pack_items do |item| %>
+                <%= render 'subscription_pack_item_fields', f: item %>
+            <% end %>
+          </tbody>
+        </table>  
+      </div> 
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <%= link_to_add_association raw('<i class="fa fa-plus" aria-hidden="true"></i> Ajouter'), form, :subscription_pack_items, class: 'btn btn-primary', data: { association_insertion_node: '.items', association_insertion_method: :append } %>
+        </div>
+      </div>
+    </div>
+    
+  </fieldset>
 
   
 

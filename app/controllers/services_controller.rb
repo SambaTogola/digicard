@@ -4,13 +4,19 @@ class ServicesController < ApplicationController
   layout "dashboard"
 
   before_action :set_service, only: [:show, :edit, :update, :destroy]
+  before_action :get_organization, only: [:index, :new]
 
   # GET /services
   # GET /services.json
   def index
-    @services = Service.all
-    record_activity("Afficher la liste des services.")
+    #organization_id = params[:id]
+    @services = Service.where(organization_id: @organization.id)
+    #record_activity("Afficher la liste des services.")
 
+  end
+
+  def organization_services
+    @services = Service.all
   end
 
   # GET /services/1
@@ -20,13 +26,13 @@ class ServicesController < ApplicationController
 
   # GET /services/new
   def new
-    @divisions = Division.all
+    @services = Service.where(organization_id: params[:organization_id])
     @service = Service.new
   end
 
   # GET /services/1/edit
   def edit
-    @divisions = Division.all
+    @services = Service.where(organization_id: @service.organization_id)
   end
 
   # POST /services
@@ -36,10 +42,10 @@ class ServicesController < ApplicationController
 
     respond_to do |format|
       if @service.save
-        record_activity("Créer un service (ID: #{@service.id})")
+        #record_activity("Créer un service (ID: #{@service.id})")
 
-        @services = Service.all
-        format.html { redirect_to @service, notice: 'Service was successfully created.' }
+        @services = Service.where(organization_id: @service.organization_id)
+        format.html { redirect_to organization_services(organization_id: @organization.id), notice: 'Service was successfully created.' }
         format.json { render :show, status: :created, location: @service }
         format.js
       else
@@ -63,7 +69,7 @@ class ServicesController < ApplicationController
       if @service.update(service_params)
         record_activity("Modifier un service (ID: #{@service.id})")
 
-        @services = Service.all
+       @services = Service.where(organization_id: @service.organization_id)
         format.html { redirect_to @service, notice: 'Service was successfully updated.' }
         format.json { render :show, status: :ok, location: @service }
         format.js
@@ -95,8 +101,15 @@ class ServicesController < ApplicationController
       @service = Service.find(params[:id])
     end
 
+    def get_organization
+      
+        @organization ||= Organization.find(params[:organization_id])
+        
+        
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
-      params.require(:service).permit(:name, :division_id, :description)
+      params.require(:service).permit(:name, :organization_id, :parent_id, :description)
     end
 end

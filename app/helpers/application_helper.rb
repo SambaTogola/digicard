@@ -95,8 +95,8 @@ module ApplicationHelper
 		offer_type = OfferType.find(id)
 	end
 
-	def unity(id)
-		unity = Unity.find(id)
+	def service(id)
+		Service.find(id)
 	end
 
 
