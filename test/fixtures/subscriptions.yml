@@ -3,6 +3,7 @@
 # Table name: subscriptions
 #
 #  id                   :bigint           not null, primary key
+#  uid                  :string
 #  user_id              :bigint
 #  subscription_pack_id :bigint
 #  subscription_type_id :bigint

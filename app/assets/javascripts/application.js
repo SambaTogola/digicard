@@ -28,6 +28,11 @@
 //= require toastr
 //= require rails.validations
 
+//= require lib/datatables.net/js/jquery.dataTables.min
+//= require lib/datatables.net-dt/js/dataTables.dataTables.min
+//= require lib/datatables.net-responsive/js/dataTables.responsive.min
+//= require lib/datatables.net-responsive-dt/js/responsive.dataTables.min
+
 // NEW BRACKET JS
 //= require lib/jquery-ui/ui/widgets/datepicker
 //= require lib/bootstrap/js/bootstrap.bundle.min
@@ -56,6 +61,8 @@
 //= require social-share-button
 
 //= require invitations
+//= require webcam-easy.min
+//= require start-webcam
 
 // For Geocomplete
 $(document).on('turbolinks:load', function(){

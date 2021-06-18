@@ -3,6 +3,7 @@
 # Table name: activity_fields
 #
 #  id          :bigint           not null, primary key
+#  uid         :string
 #  name        :string
 #  description :text
 #  status      :string
@@ -12,5 +13,10 @@
 #
 
 class ActivityField < ApplicationRecord
+	# Include shared utils.
+  include SharedUtils::Generate
+
+  before_save :generate_random_number_uid
+  
   belongs_to :user
 end

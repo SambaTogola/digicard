@@ -14,6 +14,7 @@ class PagesController < ApplicationController
   # GET /pages/1
   # GET /pages/1.json
   def show
+    render layout: "front"
   end
 
   # GET /pages/new

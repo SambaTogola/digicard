@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_24_101607) do
+ActiveRecord::Schema.define(version: 2021_06_18_080632) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2021_05_24_101607) do
   end
 
   create_table "activity_fields", force: :cascade do |t|
+    t.string "uid"
     t.string "name"
     t.text "description"
     t.string "status"
@@ -70,6 +71,33 @@ ActiveRecord::Schema.define(version: 2021_05_24_101607) do
     t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
   end
 
+  create_table "cards", force: :cascade do |t|
+    t.bigint "portfolio_id"
+    t.string "uid"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "organization"
+    t.string "work_position"
+    t.string "work_phone"
+    t.string "private_phone"
+    t.string "mobile_phone"
+    t.string "work_fax"
+    t.string "private_fax"
+    t.string "email"
+    t.string "website"
+    t.string "street"
+    t.string "zipcode"
+    t.string "city"
+    t.string "country"
+    t.text "descrption"
+    t.string "status"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["portfolio_id"], name: "index_cards_on_portfolio_id"
+    t.index ["user_id"], name: "index_cards_on_user_id"
+  end
+
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string "data_file_name", null: false
     t.string "data_content_type"
@@ -79,6 +107,20 @@ ActiveRecord::Schema.define(version: 2021_05_24_101607) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["type"], name: "index_ckeditor_assets_on_type"
+  end
+
+  create_table "contact_forms", force: :cascade do |t|
+    t.string "uid"
+    t.string "full_name"
+    t.string "phone"
+    t.string "email"
+    t.string "object"
+    t.text "message"
+    t.boolean "read"
+    t.datetime "read_at"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "features", force: :cascade do |t|
@@ -92,6 +134,7 @@ ActiveRecord::Schema.define(version: 2021_05_24_101607) do
   end
 
   create_table "invitations", force: :cascade do |t|
+    t.string "uid"
     t.bigint "organization_id"
     t.bigint "service_id"
     t.string "position"
@@ -108,6 +151,7 @@ ActiveRecord::Schema.define(version: 2021_05_24_101607) do
   end
 
   create_table "members", force: :cascade do |t|
+    t.string "uid"
     t.bigint "invitation_id"
     t.bigint "organization_id"
     t.bigint "service_id"
@@ -123,6 +167,7 @@ ActiveRecord::Schema.define(version: 2021_05_24_101607) do
   end
 
   create_table "organization_types", force: :cascade do |t|
+    t.string "uid"
     t.string "name"
     t.text "description"
     t.string "status"
@@ -190,6 +235,7 @@ ActiveRecord::Schema.define(version: 2021_05_24_101607) do
   end
 
   create_table "portfolios", force: :cascade do |t|
+    t.string "uid"
     t.string "name"
     t.text "description"
     t.string "status"
@@ -223,6 +269,7 @@ ActiveRecord::Schema.define(version: 2021_05_24_101607) do
   end
 
   create_table "services", force: :cascade do |t|
+    t.string "uid"
     t.bigint "organization_id"
     t.string "name"
     t.string "description"
@@ -253,6 +300,7 @@ ActiveRecord::Schema.define(version: 2021_05_24_101607) do
   end
 
   create_table "subscription_pack_features", force: :cascade do |t|
+    t.string "uid"
     t.string "name"
     t.text "description"
     t.string "status"
@@ -263,19 +311,19 @@ ActiveRecord::Schema.define(version: 2021_05_24_101607) do
   end
 
   create_table "subscription_pack_items", force: :cascade do |t|
+    t.string "uid"
     t.bigint "subscription_pack_id"
     t.bigint "subscription_pack_feature_id"
     t.string "quantity"
     t.string "status"
-    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["subscription_pack_feature_id"], name: "index_subscription_pack_items_on_subscription_pack_feature_id"
     t.index ["subscription_pack_id"], name: "index_subscription_pack_items_on_subscription_pack_id"
-    t.index ["user_id"], name: "index_subscription_pack_items_on_user_id"
   end
 
   create_table "subscription_packs", force: :cascade do |t|
+    t.string "uid"
     t.string "name"
     t.decimal "price"
     t.text "description"
@@ -287,6 +335,7 @@ ActiveRecord::Schema.define(version: 2021_05_24_101607) do
   end
 
   create_table "subscription_types", force: :cascade do |t|
+    t.string "uid"
     t.string "name"
     t.text "description"
     t.string "status"
@@ -297,6 +346,7 @@ ActiveRecord::Schema.define(version: 2021_05_24_101607) do
   end
 
   create_table "subscriptions", force: :cascade do |t|
+    t.string "uid"
     t.bigint "user_id"
     t.bigint "subscription_pack_id"
     t.bigint "subscription_type_id"
@@ -343,6 +393,8 @@ ActiveRecord::Schema.define(version: 2021_05_24_101607) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "activity_fields", "users"
+  add_foreign_key "cards", "portfolios"
+  add_foreign_key "cards", "users"
   add_foreign_key "invitations", "organizations"
   add_foreign_key "invitations", "services"
   add_foreign_key "invitations", "users"
@@ -366,7 +418,6 @@ ActiveRecord::Schema.define(version: 2021_05_24_101607) do
   add_foreign_key "subscription_pack_features", "users"
   add_foreign_key "subscription_pack_items", "subscription_pack_features"
   add_foreign_key "subscription_pack_items", "subscription_packs"
-  add_foreign_key "subscription_pack_items", "users"
   add_foreign_key "subscription_packs", "users"
   add_foreign_key "subscription_types", "users"
   add_foreign_key "subscriptions", "subscription_packs"

@@ -3,6 +3,7 @@
 # Table name: subscription_pack_features
 #
 #  id          :bigint           not null, primary key
+#  uid         :string
 #  name        :string
 #  description :text
 #  status      :string

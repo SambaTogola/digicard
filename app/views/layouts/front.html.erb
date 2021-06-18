@@ -25,11 +25,9 @@
 
       <div class="page-wrapper">
           <% if controller_name != "front" && action_name != "home" %>
-           
-           
          
           <% end %>
-        <%= yield %>
+          <%= yield %>
       </div>
     <%= render('layouts/partials/front/footer') %>
   </body>

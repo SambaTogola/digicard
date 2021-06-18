@@ -1,0 +1,49 @@
+<%= form_with(model: card, local: false) do |form| %>
+   <div class="modal-body">
+    <ul class="errors">
+    </ul>
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <video id="webcam" autoplay playsinline width="640" height="480"></video>
+        <canvas id="canvas" class="d-none"></canvas>
+      </div>
+      <div class="col-md-12 text-center">
+        <button id="snap" class="btn btn-primary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1"><i class="fa fa-camera" aria-hidden="true"></i> Prendre la photo</button>
+      </div>
+
+      <div class="col-md-12">
+
+        
+
+        <div class="form-group">
+          <%= form.label :title, "Titre", class: "required" %>
+          <%= form.text_field :title, class: "form-control", placeholder: "Titre", required: true %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :description %>
+          <%= form.text_area :description, class: "form-control", placeholder: "Description" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :image, "Image", class: "required" %>
+          <%= form.file_field :image, class: "form-control" %>
+        </div>
+      </div>
+
+      
+
+        <div class="form-group">
+          
+          <%= form.hidden_field :portfolio_id, value: (@portfolio.id if @portfolio) , class: "form-control" %>
+       
+          <input type="text" name="data_url", id="snap-photo">
+        </div>
+    </div>
+
+  </div><!-- modal body -->
+  <div class="modal-footer">
+    <%= link_to "Annuler", "#", class: "btn btn-secondary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1", data: {dismiss: "modal"} %>
+    <%= form.submit  class: "btn btn-primary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1",  "data-loading-text"=>"Loading...", autocomplete: "off" %>
+  </div>
+<% end %>

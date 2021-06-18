@@ -3,6 +3,7 @@
 # Table name: subscription_packs
 #
 #  id          :bigint           not null, primary key
+#  uid         :string
 #  name        :string
 #  price       :decimal(, )
 #  description :text
@@ -13,7 +14,13 @@
 #
 
 class SubscriptionPack < ApplicationRecord
+	# Include shared utils.
+  include SharedUtils::Generate
+
+  before_save :generate_random_number_uid
+  
   belongs_to :user
+  
 
   has_many :subscription_pack_items, dependent: :destroy
   accepts_nested_attributes_for :subscription_pack_items ,  allow_destroy: true , :reject_if => :no_subscription_pack_items

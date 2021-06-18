@@ -1,6 +1,7 @@
 class CreateSubscriptionPacks < ActiveRecord::Migration[5.2]
   def change
     create_table :subscription_packs do |t|
+      t.string :uid
       t.string :name
       t.decimal :price
       t.text :description

@@ -3,11 +3,11 @@
 # Table name: subscription_pack_items
 #
 #  id                           :bigint           not null, primary key
+#  uid                          :string
 #  subscription_pack_id         :bigint
 #  subscription_pack_feature_id :bigint
 #  quantity                     :string
 #  status                       :string
-#  user_id                      :bigint
 #  created_at                   :datetime         not null
 #  updated_at                   :datetime         not null
 #

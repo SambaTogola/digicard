@@ -1,32 +1,27 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
   <div class="container">
-  <!-- Navbar band -->
-  <div class= "navbar-brand">
-	
-    <%= link_to root_url, class: "navbar-brand" do %>
-      <%= image_tag "logo/logo.png", class: "logo" %> 
-    <% end %>
-	
-  </div>
+    <!-- Navbar band -->
+    <div class= "navbar-brand">
+      <%= link_to root_url, class: "navbar-brand" do %>
+        <%= image_tag "logo/logo.png", class: "logo" %> 
+      <% end %>
+    </div>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContentt" aria-controls="navbarSupportedContentt" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContentt" aria-controls="navbarSupportedContentt" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContentt">
     <ul class="navbar-nav mr-auto">
-    <li class="nav-item">
-        <%= link_to "A propos", "#", class: "nav-link" %>
+      <li class="nav-item">
+        <%= link_to "A propos", about_us_path, class: "nav-link" %>
       </li>
      
       <li class="nav-item">
-        <%= link_to "Produits", "#", class: "nav-link" %>
+        <%= link_to "Produits", pricing_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
-        <%= link_to "Prix", blog_path, class: "nav-link" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "Contactez-nous", "#", class: "nav-link" %>
+        <%= link_to "Contactez-nous", contact_path, class: "nav-link" %>
       </li>
       
     </ul>
@@ -61,7 +56,7 @@
 
    
       
-  </div>
+   </div>
   </div>
 </nav>
 

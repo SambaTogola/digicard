@@ -3,6 +3,7 @@
 # Table name: invitations
 #
 #  id              :bigint           not null, primary key
+#  uid             :string
 #  organization_id :bigint
 #  service_id      :bigint
 #  position        :string

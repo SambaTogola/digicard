@@ -3,6 +3,7 @@
 # Table name: subscription_packs
 #
 #  id          :bigint           not null, primary key
+#  uid         :string
 #  name        :string
 #  price       :decimal(, )
 #  description :text

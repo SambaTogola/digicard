@@ -62,6 +62,7 @@ class User < ApplicationRecord
   has_many :services, dependent: :destroy
   has_many :portfolios, dependent: :destroy
   has_many :invitations, dependent: :destroy
+  has_many :cards, dependent: :destroy
 	has_many :recipient_invitations, :class_name => "Invitation", :foreign_key => :recipient_id
 	#has_many :recipient_notifications, :class_name => "Notification", :foreign_key => :recipient_id
 

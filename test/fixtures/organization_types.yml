@@ -3,6 +3,7 @@
 # Table name: organization_types
 #
 #  id          :bigint           not null, primary key
+#  uid         :string
 #  name        :string
 #  description :text
 #  status      :string

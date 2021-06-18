@@ -1,0 +1,143 @@
+<%= form_with(model: card, local: false) do |form| %>
+   <div class="modal-body">
+    <ul class="errors">
+    </ul>
+    <div class="row">
+      
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <%= form.label :first_name, "Prénom", class: "required" %>
+          <%= form.text_field :first_name, class: "form-control", placeholder: "Prénom", required: true %>
+        </div>
+      </div>
+
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <%= form.label :last_name, "Nom", class: "required" %>
+          <%= form.text_field :last_name, class: "form-control", placeholder: "Nom", required: true %>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <%= form.label :organization, "Organisation", class: "required" %>
+          <%= form.text_field :organization, class: "form-control", placeholder: "Organisation", required: true %>
+        </div>
+      </div>
+
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <%= form.label :work_position, "Fonction", class: "required" %>
+          <%= form.text_field :work_position, class: "form-control", placeholder: "Fonction", required: true %>
+        </div>
+      </div>
+
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <%= form.label :work_phone, "Téléphone (Travail)", class: "required" %>
+          <%= form.text_field :work_phone, class: "form-control", placeholder: "Téléphone (Travail)", required: true %>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <%= form.label :private_phone, "Téléphone (Personnel)", class: "required" %>
+          <%= form.text_field :private_phone, class: "form-control", placeholder: "Téléphone (Personnel)", required: true %>
+        </div>
+      </div>
+
+
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <%= form.label :mobile_phone, "Téléphone (Mobile)", class: "required" %>
+          <%= form.text_field :mobile_phone, class: "form-control", placeholder: "Téléphone (Mobile)", required: true %>
+        </div>
+      </div>
+
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <%= form.label :work_fax, "Fax (Travail)", class: "required" %>
+          <%= form.text_field :work_fax, class: "form-control", placeholder: "Fax (Travail)", required: true %>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <%= form.label :private_fax, "Fax (Personnel)", class: "required" %>
+          <%= form.text_field :private_fax, class: "form-control", placeholder: "Fax (Personnel)", required: true %>
+        </div>
+      </div>
+
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <%= form.label :email, "Email", class: "required" %>
+          <%= form.email_field :email, class: "form-control", placeholder: "Email", required: true %>
+        </div>
+      </div>
+
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <%= form.label :website, "Site web" %>
+          <%= form.text_field :website, class: "form-control", placeholder: "Site web" %>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <%= form.label :street, "Rue" %>
+          <%= form.text_field :street, class: "form-control", placeholder: "Rue" %>
+        </div>
+      </div>
+
+
+
+
+       <div class="col-md-4">
+        <div class="form-group">
+          <%= form.label :zipcode, "Code Postal" %>
+          <%= form.text_field :zipcode, class: "form-control", placeholder: "Code Postal" %>
+        </div>
+      </div>
+
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <%= form.label :city, "Ville", class: "required" %>
+          <%= form.text_field :city, class: "form-control", placeholder: "Ville", required: true %>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <%= form.label :country, "Pays", class: "required" %>
+          <%= form.text_field :country, class: "form-control", placeholder: "Pays", required: true %>
+        </div>
+      </div>
+
+
+      
+
+      
+
+        <div class="form-group">
+          
+          <%= form.hidden_field :portfolio_id, value: (@portfolio.id if @portfolio) , class: "form-control" %>
+       
+         
+        </div>
+    </div>
+
+  </div><!-- modal body -->
+  <div class="modal-footer">
+    <%= link_to "Annuler", "#", class: "btn btn-secondary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1", data: {dismiss: "modal"} %>
+    <%= form.submit  class: "btn btn-primary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1",  "data-loading-text"=>"Loading...", autocomplete: "off" %>
+  </div>
+<% end %>

@@ -1,7 +1,7 @@
 <% @portfolios.each do |portfolio| %>
   <tr>
     <td><%= portfolio.name %></td>
-    <td><%= portfolio.status %></td>
+    
     <td>
         <div class="action-buttons">
             <%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
@@ -12,6 +12,10 @@
 
 <%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
 '), portfolio_delete_path(portfolio), remote: true, title: "Supprimer", class: "delete" %>
+
+
+<%= link_to raw('<i class="fa fa-id-card-o" aria-hidden="true"></i>'), portfolio_cards_path(portfolio_id: portfolio.uid), title: "Cartes" %>
+
 </div>
 </td>
   </tr>

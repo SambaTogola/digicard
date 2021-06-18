@@ -1,0 +1,44 @@
+# == Schema Information
+#
+# Table name: cards
+#
+#  id            :bigint           not null, primary key
+#  portfolio_id  :bigint
+#  uid           :string
+#  first_name    :string
+#  last_name     :string
+#  organization  :string
+#  work_position :string
+#  work_phone    :string
+#  private_phone :string
+#  mobile_phone  :string
+#  work_fax      :string
+#  private_fax   :string
+#  email         :string
+#  website       :string
+#  street        :string
+#  zipcode       :string
+#  city          :string
+#  country       :string
+#  descrption    :text
+#  status        :string
+#  user_id       :bigint
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  portfolio: one
+  title: MyString
+  descrption: MyText
+  status: MyString
+  user: one
+
+two:
+  portfolio: two
+  title: MyString
+  descrption: MyText
+  status: MyString
+  user: two

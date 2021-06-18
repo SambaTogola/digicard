@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
 
 
+
+  resources :contact_forms
+  get "pricing/" => "subscription_packs#pricing", as: :pricing
+  get "portfolio/cards/:portfolio_id" => "cards#index", as: :portfolio_cards
+  resources :cards do    
+    get "delete"
+  end
+
   get "invitations/search-users" => "invitations#search_users", as: :search_users
 
   get "members/organization/:organization_id" => "members#index", as: :organization_members

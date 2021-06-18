@@ -19,6 +19,11 @@ class SubscriptionPacksController < ApplicationController
     @subscription_pack_features = SubscriptionPackFeature.all
   end
 
+  def pricing
+    @subscription_packs = SubscriptionPack.all
+    render layout: "front"
+  end
+
   # GET /subscription_packs/1/edit
   def edit
     @subscription_pack_features = SubscriptionPackFeature.all

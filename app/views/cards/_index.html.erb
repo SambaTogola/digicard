@@ -1,0 +1,19 @@
+<% @cards.each do |card| %>
+  <tr>
+  	<td><%= card.created_at.strftime("%d/%m/%Y") %></td>
+    <td><%= card.portfolio.name %></td>
+    <td><%= card.uid %></td>
+    <td>
+                    <div class="action-buttons">
+                    
+
+
+<%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'), edit_card_path(card), remote: true, title: "Modifier", class: "delete" %>
+
+<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), card_delete_path(card), remote: true, title: "Supprimer", class: "delete" %>
+</div>
+</td>
+  </tr>
+<% end %>

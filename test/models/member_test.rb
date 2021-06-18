@@ -3,6 +3,7 @@
 # Table name: members
 #
 #  id              :bigint           not null, primary key
+#  uid             :string
 #  invitation_id   :bigint
 #  organization_id :bigint
 #  service_id      :bigint
