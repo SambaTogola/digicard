@@ -62,7 +62,7 @@
 
 //= require invitations
 //= require webcam-easy.min
-//= require start-webcam
+// require start-webcam
 
 // For Geocomplete
 $(document).on('turbolinks:load', function(){
