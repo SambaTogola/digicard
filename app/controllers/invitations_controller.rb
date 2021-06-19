@@ -1,4 +1,7 @@
 class InvitationsController < ApplicationController
+
+  authorize_resource
+  
   before_action :authenticate_user!, except: [:confirm_invitation]
   before_action :set_invitation, only: %i[ show edit update destroy ]
   before_action :set_recipient, only: %i[ new ]
@@ -63,6 +66,15 @@ class InvitationsController < ApplicationController
 
     respond_to do |format|
       if @invitation.save
+        @url = ""
+        # New thread to send mail
+        Thread.new do
+          Rails.application.executor.wrap do
+            InvitationMailer.invitation_mail(User.find(@invitation.recipient_id), @invitation, @url).deliver_now
+
+          end
+        end
+
         @invitations = Invitation.all
         format.html { redirect_to invitations_path, notice: "Invitation was successfully sended." }
         format.json { render :show, status: :created, location: @invitation }

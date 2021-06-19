@@ -97,6 +97,10 @@
             </li>
 
             <li class="sub-item">
+                <%= link_to  "Droits d'accès", permissions_path, class: "sub-link #{current? "active", permissions_path}" %>
+            </li>
+
+            <li class="sub-item">
                 <%= link_to  "Utilisateurs", all_users_path, class: "sub-link #{current? "active", all_users_path}" %>
             </li>
 
