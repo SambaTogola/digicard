@@ -352,6 +352,7 @@ ActiveRecord::Schema.define(version: 2021_06_18_080632) do
     t.bigint "subscription_type_id"
     t.datetime "start_date"
     t.datetime "end_date"
+    t.integer "quantity"
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

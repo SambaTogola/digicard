@@ -11,7 +11,12 @@
 				<p class="text-gray-soft text-regular">
 					Holilink est une solution qui vous permet d'avoir toutes vos cartes de visites en un seul endroit.			
 				</p>
-				<a class="btn btn-primary btn-lg mb-5 mb-lg-2 lift" href="#">Créer un compte<i class="fa fa-arrow-right d-none d-md-inline ml-3"></i> </a>
+				
+
+				<%= link_to raw('<i class="fa fa-arrow-right d-none d-md-inline ml-3" aria-hidden="true"></i> Essayez maintenant'), pricing_path() , class: "btn btn-primary btn-lg mb-5 mb-lg-2 lift" %>
+
+
+
 			</div>
 			<div class="col-lg-6 img-fluid d-none d-lg-block">
 				<%= image_tag "hero/h1.png" %>

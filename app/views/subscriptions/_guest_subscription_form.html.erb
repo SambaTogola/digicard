@@ -1,0 +1,48 @@
+<%= form_with(model: subscription, local: true, url: new_guest_subscription_path(pack: @subscription_pack.uid)) do |form| %>
+<% if subscription.errors.any? %>
+    <div class="alert alert-danger" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+
+      <ul>
+      <% subscription.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+
+  <div class="form-group">
+    <%= form.label :subscription_pack_id, "Plan d'abonnement", class: "required" %>
+    <%= form.collection_select(:subscription_pack_id, @subscription_packs, :id, :name, {prompt: "Sélectionner", :selected => @selected_pack.name}, class: "form-control", style: "width: 100%", disabled: true) %> 
+
+  </div>
+
+  <div class="form-group">
+    <%= form.label :price, "Prix (F CFA)", class: "required" %>
+    <%= form.number_field :price, value: @selected_pack.price, class: "form-control",  disabled: true %> 
+
+  </div>
+
+  <div class="form-group">
+    <%= form.label :subscription_type_id, "Type d'abonnement", class: "required" %>
+    <%= form.collection_select(:subscription_type_id, @subscription_types, :id, :name, {prompt: "Sélectionner"}, class: "form-control", style: "width: 100%", required: true) %> 
+
+  </div>
+
+  <div class="form-group">
+    <%= form.label :quantity, "Quantité", class: "required" %>
+    <%= form.number_field :quantity, class: "form-control", min: 1, step: :any, required: true %> 
+
+  </div>
+
+  
+
+ 
+  <div class="form-group pull-right">
+   
+    <%= form.submit "Valider", class: "btn btn-primary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1",  "data-loading-text"=>"Loading...", autocomplete: "off" %>
+  </div>
+<% end %>

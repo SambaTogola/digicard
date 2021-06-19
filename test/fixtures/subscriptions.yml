@@ -9,6 +9,7 @@
 #  subscription_type_id :bigint
 #  start_date           :datetime
 #  end_date             :datetime
+#  quantity             :integer
 #  status               :string
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null

@@ -32,6 +32,11 @@ Rails.application.routes.draw do
   end
 
   get "services/organization/:organization_id" => "services#index", as: :organization_services
+  post "subscriptions/new" => "subscriptions#new_guest_subscription"
+  get "subscriptions/new" => "subscriptions#new_guest_subscription", as: :new_guest_subscription
+
+
+  #post "subscriptions/new"
 
   resources :services do    
     get "delete"
@@ -96,6 +101,7 @@ Rails.application.routes.draw do
   get "/inquiry-success" => "inquiry_forms#success", as: :inquiry_success
   get "/contact-success" => "contact_forms#success", as: :contact_success
   get "ad/success" => "ads#success", as: :ad_success
+  get "/subscription-success" => "subscriptions#success", as: :subscription_success
 
   get "/suscribe" => "pages#newsletter_suscribe", as: :suscribe
   get "/post/:slug" => "blog#show", as: :post_show
