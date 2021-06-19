@@ -35,5 +35,8 @@ class Organization < ApplicationRecord
   has_many :members, dependent: :destroy
 
 
+  has_one_attached :logo
+
+
 
 end

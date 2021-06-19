@@ -13,7 +13,7 @@
 
       <div class="col-md-12">
         <div class="form-group">
-          <%= form.label :activity_field_id, "Secteur d'activité", class: "required" %>
+          <%= form.label :activity_field_id, "Domaine d'activité", class: "required" %>
           <%= form.collection_select(:activity_field_id, @activity_fields, :id, :name, {prompt: "Sélectionner"}, class: "form-control", style: "width: 100%") %> 
         </div>
       </div>
