@@ -61,7 +61,7 @@
 //= require social-share-button
 
 //= require invitations
-//= require webcam-easy.min
+// require webcam-easy.min
 // require start-webcam
 
 // For Geocomplete
