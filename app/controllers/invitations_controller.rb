@@ -10,7 +10,7 @@ class InvitationsController < ApplicationController
 
   # GET /invitations or /invitations.json
   def index
-    @invitations = Invitation.all
+    @invitations = current_user.invitations
   end
 
   # GET /invitations/1 or /invitations/1.json

@@ -16,7 +16,7 @@ class ServicesController < ApplicationController
   end
 
   def organization_services
-    @services = Service.all
+    @services = current_user.services
   end
 
   # GET /services/1
