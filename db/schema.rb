@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_18_080632) do
+ActiveRecord::Schema.define(version: 2021_07_02_184043) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,17 @@ ActiveRecord::Schema.define(version: 2021_06_18_080632) do
     t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
   end
 
+  create_table "api_keys", force: :cascade do |t|
+    t.string "access_token", null: false
+    t.integer "user_id", null: false
+    t.boolean "active", default: true, null: false
+    t.datetime "expires_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["access_token"], name: "index_api_keys_on_access_token", unique: true
+    t.index ["user_id"], name: "index_api_keys_on_user_id"
+  end
+
   create_table "cards", force: :cascade do |t|
     t.bigint "portfolio_id"
     t.string "uid"
@@ -84,6 +95,7 @@ ActiveRecord::Schema.define(version: 2021_06_18_080632) do
     t.string "work_fax"
     t.string "private_fax"
     t.string "email"
+    t.string "address"
     t.string "website"
     t.string "street"
     t.string "zipcode"
@@ -239,9 +251,11 @@ ActiveRecord::Schema.define(version: 2021_06_18_080632) do
     t.string "name"
     t.text "description"
     t.string "status"
+    t.bigint "organization_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["organization_id"], name: "index_portfolios_on_organization_id"
     t.index ["user_id"], name: "index_portfolios_on_user_id"
   end
 
@@ -411,6 +425,7 @@ ActiveRecord::Schema.define(version: 2021_06_18_080632) do
   add_foreign_key "permission_items", "permissions"
   add_foreign_key "permissions", "features"
   add_foreign_key "permissions", "roles"
+  add_foreign_key "portfolios", "organizations"
   add_foreign_key "portfolios", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "services", "organizations"

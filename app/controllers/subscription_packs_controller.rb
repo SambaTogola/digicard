@@ -1,5 +1,5 @@
 class SubscriptionPacksController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: %i[pricing]
   layout "dashboard"
 
   before_action :set_subscription_pack, only: %i[ show edit update destroy ]

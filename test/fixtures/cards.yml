@@ -15,6 +15,7 @@
 #  work_fax      :string
 #  private_fax   :string
 #  email         :string
+#  address       :string
 #  website       :string
 #  street        :string
 #  zipcode       :string

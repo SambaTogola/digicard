@@ -28,10 +28,14 @@
 #  updated_at    :datetime         not null
 #
 
-require 'test_helper'
+class CardSerializer < ActiveModel::Serializer
+  attributes :id, :portfolio_id, :uid, :first_name, :last_name, :organization, :work_position,
+  :work_phone, :private_phone, :mobile_phone, :work_fax, :private_fax, :email, :website, :street,
+  :zipcode, :city, :country, :descrption, :status, :thumbnail_url
+  
+  belongs_to :portfolio
 
-class CardTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  def thumbnail_url
+    	rails_blob_url(object.thumbnail) if object.thumbnail.attachment
+  	end
 end

@@ -20,7 +20,15 @@ Devise.setup do |config|
   # with default "from" parameter.
   #config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
   #config.mailer_sender = 'Imofy <registration@imofy.net>'
-    config.mailer_sender = SmtpConfig.take.present? ? "#{SmtpConfig.take.smtp_user_name}" : ""
+  #config.mailer_sender = SmtpConfig.take.present? ? "#{SmtpConfig.take.smtp_user_name}" : ""
+
+  if ActiveRecord::Base.connection.table_exists? :smtp_configs
+    if SmtpConfig.first.present?
+      config.mailer_sender = SmtpConfig.first.smtp_user_name
+    else
+      config.mailer_sender
+    end
+  end
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'

@@ -13,6 +13,7 @@ class CreateCards < ActiveRecord::Migration[5.2]
       t.string :work_fax
       t.string :private_fax
       t.string :email
+      t.string :address
       t.string :website
       t.string :street
       t.string :zipcode

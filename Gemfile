@@ -109,6 +109,14 @@ gem 'whenever', '~> 0.11.0'
 gem 'dalli', '~> 2.7', '>= 2.7.10'
 
 
+# For mobile API 
+gem 'grape', '~> 1.2', '>= 1.2.5'
+gem 'rack-cors', '~> 1.1'
+gem 'grape-active_model_serializers', '~> 1.5', '>= 1.5.2'
+gem 'devise_token_auth'
+
+
+
 group :development do
   gem "better_errors"
   gem "binding_of_caller"

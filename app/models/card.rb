@@ -15,6 +15,7 @@
 #  work_fax      :string
 #  private_fax   :string
 #  email         :string
+#  address       :string
 #  website       :string
 #  street        :string
 #  zipcode       :string
@@ -39,5 +40,5 @@ class Card < ApplicationRecord
 
 
   # For active storage
-  has_one_attached :image
+  has_one_attached :thumbnail
 end

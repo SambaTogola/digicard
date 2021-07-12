@@ -15,10 +15,12 @@ class PortfoliosController < ApplicationController
   # GET /portfolios/new
   def new
     @portfolio = Portfolio.new
+    @organizations = Organization.all
   end
 
   # GET /portfolios/1/edit
   def edit
+    @organizations = Organization.all
   end
 
   # POST /portfolios or /portfolios.json
@@ -27,11 +29,12 @@ class PortfoliosController < ApplicationController
 
     respond_to do |format|
       if @portfolio.save
-        @portfolios = Portfolio.all
+        @portfolios = current_user.portfolios
         format.html { redirect_to @portfolio, notice: "Portfolio was successfully created." }
         format.json { render :show, status: :created, location: @portfolio }
         format.js
       else
+        @organizations = Organization.all
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @portfolio.errors, status: :unprocessable_entity }
         format.js
@@ -77,6 +80,6 @@ class PortfoliosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def portfolio_params
-      params.require(:portfolio).permit(:name, :description)
+      params.require(:portfolio).permit(:name, :organization_id, :description)
     end
 end

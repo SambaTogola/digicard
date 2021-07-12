@@ -13,17 +13,15 @@
 #  updated_at      :datetime         not null
 #
 
-class Portfolio < ApplicationRecord
-	# Include shared utils.
-  include SharedUtils::Generate
-
-  before_save :generate_random_number_uid
-
-  belongs_to :user
-  belongs_to :organization, optional: true
-  has_many :cards, dependent: :destroy
+class PortfolioSerializer < ActiveModel::Serializer
+	include Rails.application.routes.url_helpers
+ 	attributes :id, :uid, :name,  :description, :status, :organization_id, :thumbnail_url
+ 	has_one :user
+ 	has_many :cards
+ 	belongs_to :organization
 
 
-  # For active storage
-   has_one_attached :thumbnail
+ 	def thumbnail_url
+    	rails_blob_url(object.thumbnail) if object.thumbnail.attachment
+  	end
 end

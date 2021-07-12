@@ -44,7 +44,7 @@ class OrganizationsController < ApplicationController
     respond_to do |format|
       if @organization.save
         #record_activity("Créer une organisation (ID: #{@organization.id})")
-        @organizations = Organization.all
+        @organizations = current_user.organizations
 
         format.html { redirect_to show_organization_path(@organization.uid), notice: 'Organization was successfully created.' }
         format.json { render :show, status: :created, location: @organization }

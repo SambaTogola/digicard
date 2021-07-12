@@ -23,24 +23,18 @@
 #  updated_at           :datetime         not null
 #
 
-class Organization < ApplicationRecord
-	# Include shared utils.
-  include SharedUtils::Generate
+class OrganizationSerializer < ActiveModel::Serializer
+  include Rails.application.routes.url_helpers
 
-  before_save :generate_random_number_uid
-  
+
+  attributes :id, :uid, :name, :organization_type_id, :activity_field_id, :slogan, :address,
+  :city, :state, :country, :phone, :email, :fax, :zip_code, :web_site, :status, :logo_url
 
   belongs_to :user
   belongs_to :organization_type
-  has_many :services, dependent: :destroy
-  has_many :invitations, dependent: :destroy
-  has_many :members, dependent: :destroy
-  has_many :portfolios, dependent: :destroy
+  has_many :portfolios
 
-
-
-  has_one_attached :logo
-
-
-
+  def logo_url
+    rails_blob_url(object.logo) if object.logo.attachment
+  end
 end

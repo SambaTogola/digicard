@@ -190,4 +190,8 @@ Rails.application.routes.draw do
   get "/500", to: "errors#internal_error"
   mount Ckeditor::Engine => '/ckeditor'
 
+
+  # For mobile API Endpoint
+  mount API::Base, at: "/"
+
 end
