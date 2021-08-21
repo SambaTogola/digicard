@@ -25,6 +25,14 @@ module API
           end
 
 
+        desc "Return card by uid"
+          params do
+            requires :uid, type: String, desc: "Card UID"
+          end
+          get "/by/:uid" do
+            Card.where(uid: permitted_params[:uid]).first!
+          end
+        end
 
         desc "Return a poll_tems"
           params do
